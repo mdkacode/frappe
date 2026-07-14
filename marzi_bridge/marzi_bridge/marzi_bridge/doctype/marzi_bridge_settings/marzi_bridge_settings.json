@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "creation": "2026-07-10 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "connection_section",
+  "v1_base_url",
+  "v3_base_url",
+  "column_break_conn",
+  "default_tenant_name",
+  "request_timeout",
+  "verify_tls"
+ ],
+ "fields": [
+  {
+   "fieldname": "connection_section",
+   "fieldtype": "Section Break",
+   "label": "Backend Connection"
+  },
+  {
+   "description": "Base URL for the backend /v1 API, e.g. https://api.marzi.life/v1",
+   "fieldname": "v1_base_url",
+   "fieldtype": "Data",
+   "label": "v1 Base URL",
+   "options": "URL",
+   "reqd": 1
+  },
+  {
+   "description": "Base URL for the backend /v3 API (tiered ticketing). Often the same host, e.g. https://api.marzi.life/v1/v3",
+   "fieldname": "v3_base_url",
+   "fieldtype": "Data",
+   "label": "v3 Base URL",
+   "options": "URL"
+  },
+  {
+   "fieldname": "column_break_conn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Marzi",
+   "description": "Sent as tenant_name on OTP send/verify.",
+   "fieldname": "default_tenant_name",
+   "fieldtype": "Data",
+   "label": "Default Tenant Name"
+  },
+  {
+   "default": "30",
+   "description": "Outbound request timeout in seconds.",
+   "fieldname": "request_timeout",
+   "fieldtype": "Int",
+   "label": "Request Timeout (s)"
+  },
+  {
+   "default": "1",
+   "description": "Verify TLS certificates on outbound calls. Keep enabled.",
+   "fieldname": "verify_tls",
+   "fieldtype": "Check",
+   "label": "Verify TLS"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-07-10 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Bridge Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "autoname": "field:user",
+ "creation": "2026-07-10 00:00:00.000000",
+ "description": "Per-user link to a backend (marzi) account. Stores the user's encrypted access/refresh tokens.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "phone",
+  "marzi_user_id",
+  "marzi_role",
+  "tenant_name",
+  "column_break_ids",
+  "linked_on",
+  "access_expires_at",
+  "tokens_section",
+  "access_token",
+  "refresh_token"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone (E.164)"
+  },
+  {
+   "fieldname": "marzi_user_id",
+   "fieldtype": "Data",
+   "label": "Marzi User ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "marzi_role",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Marzi Role",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ids",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_on",
+   "fieldtype": "Datetime",
+   "label": "Linked On",
+   "read_only": 1
+  },
+  {
+   "description": "When the stored access token expires. Refreshed transparently before expiry.",
+   "fieldname": "access_expires_at",
+   "fieldtype": "Datetime",
+   "label": "Access Expires At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tokens_section",
+   "fieldtype": "Section Break",
+   "label": "Tokens (encrypted)"
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Password",
+   "label": "Access Token"
+  },
+  {
+   "fieldname": "refresh_token",
+   "fieldtype": "Password",
+   "label": "Refresh Token"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-07-10 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi User Link",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "if_owner": 1,
+   "read": 1,
+   "role": "Marzi Admin",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}
