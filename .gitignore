@@ -200,3 +200,4 @@ cypress/videos
 .aider*
 
 Backend-for-org/*
+admin-v2/*

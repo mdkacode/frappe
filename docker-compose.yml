@@ -1,0 +1,70 @@
+# Dev stack for the Frappe bench (frappe fork + marzi_bridge).
+#
+#   cp .env.example .env   # then fill in the passwords (a .env is generated for you)
+#   docker compose up --build
+#
+# App source is bind-mounted, so host edits are live. The bench (env/, sites/,
+# config/) and node_modules live in named volumes. See DOCKER.md.
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?set DB_ROOT_PASSWORD in .env}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+      - ./docker/mariadb.cnf:/etc/mysql/conf.d/frappe.cnf:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    ports:
+      # Host 3308 avoids colliding with host MySQL (3306) and the host bench's MariaDB (3307).
+      - "3308:3306"
+
+  redis-cache:
+    image: redis:7-alpine
+    volumes:
+      - redis-cache-data:/data
+
+  redis-queue:
+    image: redis:7-alpine
+    volumes:
+      - redis-queue-data:/data
+
+  frappe:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    environment:
+      SITE_NAME: ${SITE_NAME:-marzi.localhost}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?set DB_ROOT_PASSWORD in .env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env}
+      DB_HOST: mariadb
+      DB_PORT: "3306"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+    volumes:
+      # frappe app == the whole repo root (its package lives in ./frappe)
+      - ./:/home/frappe/frappe-bench/apps/frappe
+      - ./marzi_bridge:/home/frappe/frappe-bench/apps/marzi_bridge
+      # bench state (env/, sites/, config/, logs/) — Linux-specific, kept off the host
+      - bench:/home/frappe/frappe-bench
+      # keep node_modules in a volume (fast + off the host tree)
+      - frappe-node-modules:/home/frappe/frappe-bench/apps/frappe/node_modules
+    ports:
+      - "8000:8000"   # web  -> http://marzi.localhost:8000
+      - "9000:9000"   # socketio
+
+volumes:
+  mariadb-data:
+  redis-cache-data:
+  redis-queue-data:
+  bench:
+  frappe-node-modules:
