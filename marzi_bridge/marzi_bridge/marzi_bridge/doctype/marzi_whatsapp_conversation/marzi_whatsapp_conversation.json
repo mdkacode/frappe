@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "mobile",
+  "contact_name",
+  "full_name",
+  "city",
+  "area",
+  "col_ov2",
+  "last_message",
+  "last_message_direction",
+  "flow_state",
+  "last_interaction",
+  "conversation_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "contact_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "label": "Area",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_ov2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_message",
+   "fieldtype": "Small Text",
+   "label": "Last Message",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_message_direction",
+   "fieldtype": "Select",
+   "label": "Direction",
+   "options": "\ninbound\noutbound",
+   "read_only": 1
+  },
+  {
+   "fieldname": "flow_state",
+   "fieldtype": "Data",
+   "label": "Flow State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_interaction",
+   "fieldtype": "Data",
+   "label": "Last Interaction",
+   "read_only": 1
+  },
+  {
+   "fieldname": "conversation_id",
+   "fieldtype": "Data",
+   "label": "Conversation ID",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi WhatsApp Conversation",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "mobile",
+ "track_changes": 0
+}

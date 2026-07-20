@@ -1,11 +1,4 @@
-"""Templates proxy — page templates used to generate customer-facing pages.
-
-In the backend, a publishing page carries a `template` field (T1|T2); there is no
-standalone `/templates` CRUD resource documented in API_DOC §14. Until a dedicated
-template endpoint is confirmed, this module exposes the template dimension via the
-publishing pages surface (filtered by template) and leaves richer template
-management as a TODO — we do not fabricate a route.
-"""
+"""Templates proxy — mirrors publishingApi.ts page-TEMPLATE endpoints (Backend-for-org API_DOC §14)."""
 
 import frappe
 
@@ -15,11 +8,35 @@ from marzi_bridge.permissions import require_marzi
 
 @frappe.whitelist()
 @require_marzi()
-def list_pages_by_template():
-	# Forwards a `template` filter (e.g. T1|T2) to the publishing pages listing.
-	return MarziClient().get("/publishing/admin/pages", params=request_params())
+def list_templates():
+	return MarziClient().get("/v1/publishing/admin/templates", service="publishing", params=request_params())
 
 
-# TODO: confirm whether the backend exposes a dedicated template CRUD resource.
-# If so, add list/get/create/update/delete proxies here following the standard
-# pattern (see speakers.py). Do not invent routes before confirming.
+@frappe.whitelist()
+@require_marzi()
+def get_template(template_id: str):
+	return MarziClient().get(f"/v1/publishing/admin/templates/{template_id}", service="publishing")
+
+
+@frappe.whitelist()
+@require_marzi()
+def create_template():
+	return MarziClient().post(
+		"/v1/publishing/admin/templates", service="publishing", json_body=request_params()
+	)
+
+
+@frappe.whitelist()
+@require_marzi()
+def update_template(template_id: str):
+	return MarziClient().patch(
+		f"/v1/publishing/admin/templates/{template_id}",
+		service="publishing",
+		json_body=request_params(exclude=["template_id"]),
+	)
+
+
+@frappe.whitelist()
+@require_marzi()
+def delete_template(template_id: str):
+	return MarziClient().delete(f"/v1/publishing/admin/templates/{template_id}", service="publishing")

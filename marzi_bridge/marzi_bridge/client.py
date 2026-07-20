@@ -1,8 +1,11 @@
 """MarziClient — the single choke point for all outbound calls to the backend.
 
 Every feature proxy goes through here. Responsibilities:
-- build the URL from `Marzi Bridge Settings` (per-call `/v1` vs `/v3`)
-- attach the caller's Bearer token (fetched/refreshed by `auth.tokens`)
+- build the URL from `Marzi Bridge Settings`, selecting the right upstream
+  *service* per call (the dashboard talks to several: the unified gateway `v1`
+  and `v3`, plus separate publishing / blog / tracking / whatsapp / payments hosts)
+- attach the caller's Bearer token (fetched/refreshed by `auth.tokens`), except
+  for services the dashboard itself calls unauthenticated (whatsapp, payments)
 - retry exactly once on a `401` after forcing a token refresh
 - normalize backend error envelopes into a Frappe error (never logging tokens)
 
@@ -25,23 +28,45 @@ class MarziAPIError(frappe.ValidationError):
 	pass
 
 
-def _base_url(version: str) -> str:
-	settings = get_settings()
-	url = settings.v1_base_url if version == "v1" else settings.v3_base_url
+# Maps a logical service name (what a proxy module asks for) to the settings field
+# holding its base URL. Mirrors the dashboard's per-slice base URLs — see
+# admin-v2/src/store/api/*.ts and .env.example.
+_SERVICE_FIELDS = {
+	"v1": "v1_base_url",
+	"v3": "v3_base_url",
+	"publishing": "publishing_base_url",
+	"blog": "blog_base_url",
+	"tracking": "tracking_base_url",
+	"whatsapp": "whatsapp_base_url",
+	"payments": "payments_base_url",
+}
+
+
+def _resolve_service(service: str | None, version: str | None) -> str:
+	# `version` is the legacy kwarg (v1/v3); `service` is the general one. Either works.
+	return service or version or "v1"
+
+
+def _base_url(service: str) -> str:
+	field = _SERVICE_FIELDS.get(service)
+	if not field:
+		frappe.throw(_("Unknown backend service: {0}").format(service))
+	url = get_settings().get(field)
 	if not url:
-		frappe.throw(_("Marzi Bridge Settings: {0} base URL is not configured.").format(version))
+		frappe.throw(_("Marzi Bridge Settings: {0} base URL is not configured.").format(service))
 	return url
 
 
-def _build_url(path: str, version: str) -> str:
-	return f"{_base_url(version)}/{path.lstrip('/')}"
+def _build_url(path: str, service: str) -> str:
+	return f"{_base_url(service)}/{path.lstrip('/')}"
 
 
 def raw_request(
 	method: str,
 	path: str,
 	*,
-	version: str = "v1",
+	service: str | None = None,
+	version: str | None = None,
 	headers: dict | None = None,
 	params: dict | None = None,
 	json_body: dict | None = None,
@@ -60,7 +85,7 @@ def raw_request(
 	session = get_request_session()
 	return session.request(
 		method.upper(),
-		_build_url(path, version),
+		_build_url(path, _resolve_service(service, version)),
 		headers=headers,
 		params=params or None,
 		json=json_body,
@@ -105,19 +130,29 @@ class MarziClient:
 	def __init__(self, user: str | None = None):
 		self.user = user or frappe.session.user
 
-	def request(self, method: str, path: str, *, version="v1", params=None, json_body=None):
+	def request(
+		self, method: str, path: str, *, service=None, version=None, params=None, json_body=None, auth=True
+	):
+		svc = _resolve_service(service, version)
+
+		# Some upstreams (whatsapp, payments) are called by the dashboard without a
+		# Bearer token — mirror that. No token means no 401-refresh dance either.
+		if not auth:
+			response = raw_request(method, path, service=svc, params=params, json_body=json_body)
+			return self._handle(response, method, path)
+
 		# Imported lazily to avoid a circular import (tokens -> client.raw_request).
 		from marzi_bridge.auth.tokens import force_refresh, get_valid_token
 
 		token = get_valid_token(self.user)
 		response = raw_request(
-			method, path, version=version, params=params, json_body=json_body, token=token
+			method, path, service=svc, params=params, json_body=json_body, token=token
 		)
 		if response.status_code == 401:
 			# Token rejected despite our local expiry check — refresh once and retry.
 			token = force_refresh(self.user)
 			response = raw_request(
-				method, path, version=version, params=params, json_body=json_body, token=token
+				method, path, service=svc, params=params, json_body=json_body, token=token
 			)
 		return self._handle(response, method, path)
 

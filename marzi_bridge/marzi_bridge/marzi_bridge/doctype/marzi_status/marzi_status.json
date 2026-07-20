@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "image",
+  "description",
+  "status",
+  "visible_to_users",
+  "col_ov2",
+  "image_url",
+  "image_key",
+  "created_by",
+  "created_at",
+  "updated_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Image",
+   "label": "Image",
+   "options": "image_url"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\ndraft\npublished",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "visible_to_users",
+   "fieldtype": "Check",
+   "label": "Visible To Users",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_ov2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "image_url",
+   "fieldtype": "Data",
+   "label": "Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "image_key",
+   "fieldtype": "Data",
+   "label": "Image Key",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "updated_at",
+   "fieldtype": "Data",
+   "label": "Updated At",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Status",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "description",
+ "track_changes": 0,
+ "image_field": "image_url"
+}

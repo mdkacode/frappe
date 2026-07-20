@@ -28,11 +28,21 @@ class FakeResponse:
 
 
 def _settings():
+	values = {
+		"v1_base_url": "https://api.example.com/v1",
+		"v3_base_url": "https://api.example.com/v1/v3",
+		"publishing_base_url": "https://api.example.com",
+		"blog_base_url": "https://blog.example.com",
+		"tracking_base_url": "https://track.example.com",
+		"whatsapp_base_url": "https://wa.example.com",
+		"payments_base_url": "https://pay.example.com",
+		"request_timeout": 30,
+		"verify_tls": 1,
+	}
 	s = MagicMock()
-	s.v1_base_url = "https://api.example.com/v1"
-	s.v3_base_url = "https://api.example.com/v1/v3"
-	s.request_timeout = 30
-	s.verify_tls = 1
+	s.configure_mock(**values)
+	# MarziClient reads base URLs via settings.get(field); back it by the same dict.
+	s.get.side_effect = values.get
 	return s
 
 
@@ -75,6 +85,28 @@ class MarziClientTests(unittest.TestCase):
 		self.assertEqual(
 			session.request.call_args[0][1], "https://api.example.com/v1/v3/admin/events"
 		)
+
+	def test_service_selects_mapped_base_url(self):
+		session, sp = self._with_session(FakeResponse(200, {}))
+		with sp:
+			MarziClient(user="a@example.com").get("/admin/posts", service="blog")
+		self.assertEqual(session.request.call_args[0][1], "https://blog.example.com/admin/posts")
+
+	def test_auth_false_omits_token_and_skips_refresh(self):
+		# whatsapp/payments are called unauthenticated by the dashboard. When
+		# auth=False, no token is attached and the token layer is never touched.
+		session, sp = self._with_session(FakeResponse(200, {"ok": 1}))
+		with sp, patch("marzi_bridge.auth.tokens.get_valid_token") as gvt, patch(
+			"marzi_bridge.auth.tokens.force_refresh"
+		) as fr:
+			out = MarziClient(user="a@example.com").get(
+				"/payment/all", service="payments", auth=False
+			)
+		self.assertEqual(out, {"ok": 1})
+		gvt.assert_not_called()
+		fr.assert_not_called()
+		self.assertNotIn("Authorization", session.request.call_args.kwargs["headers"])
+		self.assertEqual(session.request.call_args[0][1], "https://pay.example.com/payment/all")
 
 	def test_401_triggers_single_refresh_and_retry(self):
 		session, sp = self._with_session(

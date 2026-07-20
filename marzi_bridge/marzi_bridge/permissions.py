@@ -11,6 +11,15 @@ import frappe
 from frappe import _
 
 
+def check_app_permission():
+	"""Gate the Marzi Bridge tile on the /apps launcher.
+
+	Referenced by the `add_to_apps_screen` hook. Shows the tile only to users who
+	can actually use the app (a `Marzi Admin`, or a `System Manager`).
+	"""
+	return bool(set(frappe.get_roles()) & {"Marzi Admin", "System Manager"})
+
+
 def require_marzi(roles=("Marzi Admin",)):
 	"""Gate a whitelisted method on Frappe roles.
 

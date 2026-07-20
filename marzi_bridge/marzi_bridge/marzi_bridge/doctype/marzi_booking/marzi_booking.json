@@ -1,0 +1,283 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "attendee_photo",
+  "confirmation_number",
+  "event_title",
+  "event_city",
+  "status",
+  "check_in_status",
+  "check_in_time",
+  "col_ov2",
+  "user_first_name",
+  "user_last_name",
+  "phone",
+  "email",
+  "user_profile_pic_url",
+  "seats_booked",
+  "sec_payment",
+  "total_amount",
+  "original_amount",
+  "discount_amount",
+  "final_paid_amount",
+  "promo_code_applied",
+  "coupon_applied",
+  "col_pay2",
+  "gst_percentage",
+  "gst_amount",
+  "cgst_amount",
+  "sgst_amount",
+  "igst_amount",
+  "gst_jurisdiction",
+  "paid",
+  "paid_at",
+  "created_at",
+  "sec_tiers",
+  "is_multitier",
+  "tiers"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "attendee_photo",
+   "fieldtype": "Image",
+   "label": "Attendee",
+   "options": "user_profile_pic_url"
+  },
+  {
+   "fieldname": "confirmation_number",
+   "fieldtype": "Data",
+   "label": "Confirmation #",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_title",
+   "fieldtype": "Data",
+   "label": "Event",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_city",
+   "fieldtype": "Data",
+   "label": "City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "check_in_status",
+   "fieldtype": "Data",
+   "label": "Check-in",
+   "read_only": 1
+  },
+  {
+   "fieldname": "check_in_time",
+   "fieldtype": "Data",
+   "label": "Check-in Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_ov2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user_first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user_last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user_profile_pic_url",
+   "fieldtype": "Data",
+   "label": "Profile Pic URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seats_booked",
+   "fieldtype": "Int",
+   "label": "Seats",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_payment",
+   "fieldtype": "Section Break",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Float",
+   "label": "Total Amount",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "original_amount",
+   "fieldtype": "Float",
+   "label": "Original Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount_amount",
+   "fieldtype": "Float",
+   "label": "Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "final_paid_amount",
+   "fieldtype": "Float",
+   "label": "Final Paid",
+   "read_only": 1
+  },
+  {
+   "fieldname": "promo_code_applied",
+   "fieldtype": "Data",
+   "label": "Promo Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "coupon_applied",
+   "fieldtype": "Check",
+   "label": "Coupon Applied",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_pay2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gst_percentage",
+   "fieldtype": "Float",
+   "label": "GST %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gst_amount",
+   "fieldtype": "Float",
+   "label": "GST Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cgst_amount",
+   "fieldtype": "Float",
+   "label": "CGST",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sgst_amount",
+   "fieldtype": "Float",
+   "label": "SGST",
+   "read_only": 1
+  },
+  {
+   "fieldname": "igst_amount",
+   "fieldtype": "Float",
+   "label": "IGST",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gst_jurisdiction",
+   "fieldtype": "Data",
+   "label": "GST Jurisdiction",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid",
+   "fieldtype": "Check",
+   "label": "Paid",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid_at",
+   "fieldtype": "Data",
+   "label": "Paid At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_tiers",
+   "fieldtype": "Section Break",
+   "label": "Tiers"
+  },
+  {
+   "fieldname": "is_multitier",
+   "fieldtype": "Check",
+   "label": "Multi-tier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tiers",
+   "fieldtype": "Code",
+   "label": "Tiers",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Booking",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "confirmation_number",
+ "track_changes": 0,
+ "image_field": "user_profile_pic_url"
+}

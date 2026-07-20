@@ -1,0 +1,254 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "title",
+  "slug",
+  "subtitle",
+  "status",
+  "locale",
+  "translation_group",
+  "col_ov2",
+  "excerpt",
+  "author_id",
+  "category_id",
+  "reading_minutes",
+  "publish_at",
+  "published_at",
+  "created_at",
+  "updated_at",
+  "sec_seo",
+  "seo_title",
+  "seo_description",
+  "canonical_url",
+  "tab_media",
+  "cover_image",
+  "cover_image_url",
+  "col_media2",
+  "og_image",
+  "og_image_url",
+  "tab_content",
+  "content_html",
+  "content_json",
+  "tab_tags",
+  "tags"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "subtitle",
+   "fieldtype": "Data",
+   "label": "Subtitle",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDRAFT\nSCHEDULED\nPUBLISHED\nARCHIVED",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "locale",
+   "fieldtype": "Data",
+   "label": "Locale",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "translation_group",
+   "fieldtype": "Data",
+   "label": "Translation Group",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_ov2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "excerpt",
+   "fieldtype": "Small Text",
+   "label": "Excerpt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "author_id",
+   "fieldtype": "Data",
+   "label": "Author ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "category_id",
+   "fieldtype": "Data",
+   "label": "Category ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reading_minutes",
+   "fieldtype": "Int",
+   "label": "Reading Minutes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "publish_at",
+   "fieldtype": "Data",
+   "label": "Publish At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "published_at",
+   "fieldtype": "Data",
+   "label": "Published At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "updated_at",
+   "fieldtype": "Data",
+   "label": "Updated At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_seo",
+   "fieldtype": "Section Break",
+   "label": "SEO"
+  },
+  {
+   "fieldname": "seo_title",
+   "fieldtype": "Data",
+   "label": "SEO Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seo_description",
+   "fieldtype": "Small Text",
+   "label": "SEO Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "canonical_url",
+   "fieldtype": "Data",
+   "label": "Canonical URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_media",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
+   "fieldname": "cover_image",
+   "fieldtype": "Image",
+   "label": "Cover",
+   "options": "cover_image_url"
+  },
+  {
+   "fieldname": "cover_image_url",
+   "fieldtype": "Data",
+   "label": "Cover Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_media2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "og_image",
+   "fieldtype": "Image",
+   "label": "OG Image",
+   "options": "og_image_url"
+  },
+  {
+   "fieldname": "og_image_url",
+   "fieldtype": "Data",
+   "label": "OG Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_content",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "content_html",
+   "fieldtype": "Text Editor",
+   "label": "Content (HTML)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "content_json",
+   "fieldtype": "Code",
+   "label": "Content (JSON)",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_tags",
+   "fieldtype": "Tab Break",
+   "label": "Tags"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Table",
+   "label": "Tags",
+   "options": "Marzi Blog Tag",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Blog Post",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 0,
+ "image_field": "cover_image_url"
+}

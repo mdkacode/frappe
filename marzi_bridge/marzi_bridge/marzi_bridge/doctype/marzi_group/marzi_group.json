@@ -1,0 +1,223 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "group_name",
+  "category",
+  "type",
+  "status",
+  "city",
+  "is_default",
+  "col_ov2",
+  "member_count",
+  "post_count",
+  "created_at",
+  "updated_at",
+  "sec_about",
+  "description",
+  "interests",
+  "tags",
+  "tab_media",
+  "cover_image",
+  "cover_image_url",
+  "col_media2",
+  "icon_image",
+  "icon_image_url",
+  "tab_members",
+  "members",
+  "tab_posts",
+  "posts"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "group_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nOPEN\nCLOSED",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nACTIVE\nINACTIVE\nARCHIVED",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Default",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_ov2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "member_count",
+   "fieldtype": "Int",
+   "label": "Members",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "post_count",
+   "fieldtype": "Int",
+   "label": "Posts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "updated_at",
+   "fieldtype": "Data",
+   "label": "Updated At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_about",
+   "fieldtype": "Section Break",
+   "label": "About"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "interests",
+   "fieldtype": "Code",
+   "label": "Interests",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Code",
+   "label": "Tags",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_media",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
+   "fieldname": "cover_image",
+   "fieldtype": "Image",
+   "label": "Cover",
+   "options": "cover_image_url"
+  },
+  {
+   "fieldname": "cover_image_url",
+   "fieldtype": "Data",
+   "label": "Cover Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_media2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "icon_image",
+   "fieldtype": "Image",
+   "label": "Icon",
+   "options": "icon_image_url"
+  },
+  {
+   "fieldname": "icon_image_url",
+   "fieldtype": "Data",
+   "label": "Icon Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_members",
+   "fieldtype": "Tab Break",
+   "label": "Members"
+  },
+  {
+   "fieldname": "members",
+   "fieldtype": "Table",
+   "label": "Members",
+   "options": "Marzi Group Member",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_posts",
+   "fieldtype": "Tab Break",
+   "label": "Posts"
+  },
+  {
+   "fieldname": "posts",
+   "fieldtype": "Table",
+   "label": "Posts",
+   "options": "Marzi Group Post",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Group",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "group_name",
+ "track_changes": 0,
+ "image_field": "cover_image_url"
+}

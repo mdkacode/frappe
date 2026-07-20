@@ -1,4 +1,7 @@
-"""Bookings proxy — Backend-for-org API_DOC §6."""
+"""Bookings proxy — mirrors admin-v2/src/store/api/bookingsApi.ts.
+
+Thin pass-through to the backend admin booking routes (Backend-for-org API_DOC §6).
+"""
 
 import frappe
 
@@ -8,30 +11,11 @@ from marzi_bridge.permissions import require_marzi
 
 @frappe.whitelist()
 @require_marzi()
-def list_bookings():
-	# Supports filters + ?format=csv (see API_DOC §6 notes).
+def list_admin_bookings():
 	return MarziClient().get("/admin/bookings", params=request_params())
 
 
 @frappe.whitelist()
 @require_marzi()
-def list_attendees(event_id: str):
-	return MarziClient().get(f"/events/{event_id}/attendees", params=request_params(exclude=["event_id"]))
-
-
-@frappe.whitelist()
-@require_marzi()
-def get_booking(booking_id: str):
-	return MarziClient().get(f"/bookings/{booking_id}")
-
-
-@frappe.whitelist()
-@require_marzi()
-def cancel_booking(booking_id: str):
-	return MarziClient().delete(f"/bookings/{booking_id}")
-
-
-@frappe.whitelist()
-@require_marzi()
-def check_in(booking_id: str):
-	return MarziClient().post(f"/bookings/{booking_id}/check-in", json_body=request_params(exclude=["booking_id"]))
+def list_coupon_audit():
+	return MarziClient().get("/admin/offers/first-event-audit", params=request_params())

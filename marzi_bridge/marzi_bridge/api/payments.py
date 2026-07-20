@@ -1,8 +1,9 @@
-"""Payments proxy — Backend-for-org API_DOC §6.
+"""Payments proxy — mirrors admin-v2/src/store/api/paymentsApi.ts.
 
-The backend has no standalone `/payments` resource; customer payment records are
-surfaced through admin bookings (which carry `user_phone` + monetary/GST fields),
-and checkout confirmation is idempotent. Search-by-phone is a booking filter.
+NOTE: the dashboard's payments slice uses a plain `fetchBaseQuery` (not the
+authenticated `createBaseQuery`), so the upstream payments Lambda is called
+UNAUTHENTICATED — no Bearer token. We mirror that with `auth=False` on every
+call. `@require_marzi()` still guards the Frappe-side proxy entry point.
 """
 
 import frappe
@@ -13,13 +14,21 @@ from marzi_bridge.permissions import require_marzi
 
 @frappe.whitelist()
 @require_marzi()
-def search_payments():
-	# Search by phone (and any other admin-booking filters).
-	return MarziClient().get("/admin/bookings", params=request_params())
+def list_all_payments():
+	return MarziClient().get(
+		"/payment/all",
+		service="payments",
+		auth=False,
+		params=request_params(),
+	)
 
 
 @frappe.whitelist()
 @require_marzi()
-def confirm_payment(order_id: str):
-	# Idempotent: replaying the same order_id may return ALREADY_CONFIRMED.
-	return MarziClient().post(f"/checkout/{order_id}/confirm", json_body=request_params(exclude=["order_id"]))
+def list_payments_by_mobile():
+	return MarziClient().get(
+		"/payment/payments",
+		service="payments",
+		auth=False,
+		params=request_params(),
+	)

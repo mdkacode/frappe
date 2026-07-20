@@ -84,15 +84,20 @@ def after_response_wrapper(app):
 
 	@functools.wraps(app)
 	def application(environ, start_response):
-		return ClosingIterator(
-			app(environ, start_response),
-			(
-				frappe.rate_limiter.update,
-				frappe.recorder.dump,
-				frappe.request.after_response.run,
-				frappe.destroy,
-			),
-		)
+		response_iter = app(environ, start_response)
+
+		# The request local may already be unbound here (e.g. a request that 404s
+		# in `frappe.api.handle` before `request.after_response` is attached, such
+		# as a stray `/api/v1/*` call). Dereferencing `frappe.request` eagerly then
+		# raises `RuntimeError: object is not bound` inside the WSGI teardown. Guard
+		# it: only schedule the after-response callbacks when a request is bound.
+		callbacks = [frappe.rate_limiter.update, frappe.recorder.dump]
+		request = getattr(frappe.local, "request", None)
+		if request is not None and getattr(request, "after_response", None) is not None:
+			callbacks.append(request.after_response.run)
+		callbacks.append(frappe.destroy)
+
+		return ClosingIterator(response_iter, tuple(callbacks))
 
 	return application
 

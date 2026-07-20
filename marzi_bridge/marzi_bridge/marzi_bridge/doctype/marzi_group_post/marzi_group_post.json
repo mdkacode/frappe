@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "creation": "2026-07-20 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "content",
+  "like_count",
+  "comment_count",
+  "status",
+  "created_at",
+  "author",
+  "media_urls",
+  "post_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "content",
+   "fieldtype": "Small Text",
+   "label": "Content",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "like_count",
+   "fieldtype": "Int",
+   "label": "Likes",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "comment_count",
+   "fieldtype": "Int",
+   "label": "Comments",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Posted",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Long Text",
+   "label": "Author",
+   "read_only": 1
+  },
+  {
+   "fieldname": "media_urls",
+   "fieldtype": "Long Text",
+   "label": "Media",
+   "read_only": 1
+  },
+  {
+   "fieldname": "post_id",
+   "fieldtype": "Data",
+   "label": "Post ID",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Group Post",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

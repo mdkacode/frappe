@@ -1,0 +1,474 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "title",
+  "status",
+  "event_mode",
+  "slug",
+  "short_description",
+  "sec_schedule",
+  "event_start_time",
+  "event_end_time",
+  "col_sched2",
+  "booking_start_time",
+  "booking_end_time",
+  "timezone_id",
+  "sec_venue",
+  "venue_name",
+  "city_name",
+  "city_id",
+  "address_line1",
+  "address_line2",
+  "state",
+  "postal_code",
+  "col_venue2",
+  "latitude",
+  "longitude",
+  "online_event_url",
+  "online_access_code",
+  "sec_pricing",
+  "ticket_price_rupees",
+  "gst_percentage",
+  "final_amount",
+  "col_price2",
+  "max_capacity",
+  "booking_limit_per_user",
+  "is_multitier",
+  "sec_meta",
+  "share_url",
+  "meta_title",
+  "meta_description",
+  "tags",
+  "categories",
+  "col_meta2",
+  "created_at",
+  "updated_at",
+  "published_at",
+  "tab_media",
+  "hero_image",
+  "hero_image_cdn_url",
+  "hero_video_url",
+  "gallery_image_urls",
+  "video_urls",
+  "tab_content",
+  "about_event",
+  "about_event_html",
+  "good_to_know",
+  "whats_included",
+  "faqs",
+  "testimonials",
+  "galleries",
+  "tab_attendees",
+  "attendees",
+  "tab_ticketing",
+  "tiers"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDRAFT\nPUBLISHED\nCANCELLED\nCOMPLETED",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_mode",
+   "fieldtype": "Select",
+   "label": "Mode",
+   "options": "\nOFFLINE\nONLINE",
+   "read_only": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "read_only": 1
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_schedule",
+   "fieldtype": "Section Break",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "event_start_time",
+   "fieldtype": "Data",
+   "label": "Start",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_end_time",
+   "fieldtype": "Data",
+   "label": "End",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_sched2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "booking_start_time",
+   "fieldtype": "Data",
+   "label": "Booking Opens",
+   "read_only": 1
+  },
+  {
+   "fieldname": "booking_end_time",
+   "fieldtype": "Data",
+   "label": "Booking Closes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timezone_id",
+   "fieldtype": "Data",
+   "label": "Timezone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_venue",
+   "fieldtype": "Section Break",
+   "label": "Venue"
+  },
+  {
+   "fieldname": "venue_name",
+   "fieldtype": "Data",
+   "label": "Venue",
+   "read_only": 1
+  },
+  {
+   "fieldname": "city_name",
+   "fieldtype": "Data",
+   "label": "City",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "city_id",
+   "fieldtype": "Data",
+   "label": "City ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_line1",
+   "fieldtype": "Data",
+   "label": "Address 1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_line2",
+   "fieldtype": "Data",
+   "label": "Address 2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_venue2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Data",
+   "label": "Latitude",
+   "read_only": 1
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Data",
+   "label": "Longitude",
+   "read_only": 1
+  },
+  {
+   "fieldname": "online_event_url",
+   "fieldtype": "Data",
+   "label": "Online URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "online_access_code",
+   "fieldtype": "Data",
+   "label": "Access Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_pricing",
+   "fieldtype": "Section Break",
+   "label": "Pricing & Capacity"
+  },
+  {
+   "fieldname": "ticket_price_rupees",
+   "fieldtype": "Float",
+   "label": "Ticket Price (\u20b9)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gst_percentage",
+   "fieldtype": "Float",
+   "label": "GST %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "final_amount",
+   "fieldtype": "Float",
+   "label": "Final Amount",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_price2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "max_capacity",
+   "fieldtype": "Int",
+   "label": "Max Capacity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "booking_limit_per_user",
+   "fieldtype": "Int",
+   "label": "Limit / User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_multitier",
+   "fieldtype": "Check",
+   "label": "Multi-tier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_meta",
+   "fieldtype": "Section Break",
+   "label": "Meta"
+  },
+  {
+   "fieldname": "share_url",
+   "fieldtype": "Data",
+   "label": "Share URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "meta_title",
+   "fieldtype": "Data",
+   "label": "Meta Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "meta_description",
+   "fieldtype": "Small Text",
+   "label": "Meta Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Code",
+   "label": "Tags",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "categories",
+   "fieldtype": "Code",
+   "label": "Categories",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_meta2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "updated_at",
+   "fieldtype": "Data",
+   "label": "Updated At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "published_at",
+   "fieldtype": "Data",
+   "label": "Published At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_media",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
+   "fieldname": "hero_image",
+   "fieldtype": "Image",
+   "label": "Hero Image",
+   "options": "hero_image_cdn_url"
+  },
+  {
+   "fieldname": "hero_image_cdn_url",
+   "fieldtype": "Data",
+   "label": "Hero Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hero_video_url",
+   "fieldtype": "Data",
+   "label": "Hero Video URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gallery_image_urls",
+   "fieldtype": "Code",
+   "label": "Gallery Image URLs",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "video_urls",
+   "fieldtype": "Code",
+   "label": "Video URLs",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_content",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "about_event",
+   "fieldtype": "Text",
+   "label": "About",
+   "read_only": 1
+  },
+  {
+   "fieldname": "about_event_html",
+   "fieldtype": "Text Editor",
+   "label": "About (HTML)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "good_to_know",
+   "fieldtype": "Code",
+   "label": "Good to Know",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "whats_included",
+   "fieldtype": "Code",
+   "label": "What's Included",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "faqs",
+   "fieldtype": "Code",
+   "label": "FAQs",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "testimonials",
+   "fieldtype": "Code",
+   "label": "Testimonials",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "galleries",
+   "fieldtype": "Code",
+   "label": "Galleries",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_attendees",
+   "fieldtype": "Tab Break",
+   "label": "Attendees"
+  },
+  {
+   "fieldname": "attendees",
+   "fieldtype": "Table",
+   "label": "Attendees",
+   "options": "Marzi Event Attendee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_ticketing",
+   "fieldtype": "Tab Break",
+   "label": "Ticketing"
+  },
+  {
+   "fieldname": "tiers",
+   "fieldtype": "Table",
+   "label": "Ticket Tiers",
+   "options": "Marzi Event Tier",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Event",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 0,
+ "image_field": "hero_image_cdn_url"
+}

@@ -1,4 +1,4 @@
-"""Pages proxy — Backend-for-org API_DOC §14 (publishing / CMS landing pages)."""
+"""Pages proxy — mirrors publishingApi.ts PAGES endpoints (Backend-for-org API_DOC §14)."""
 
 import frappe
 
@@ -9,36 +9,40 @@ from marzi_bridge.permissions import require_marzi
 @frappe.whitelist()
 @require_marzi()
 def list_pages():
-	return MarziClient().get("/publishing/admin/pages", params=request_params())
+	return MarziClient().get("/v1/publishing/admin/pages", service="publishing", params=request_params())
 
 
 @frappe.whitelist()
 @require_marzi()
 def get_page(page_id: str):
-	return MarziClient().get(f"/publishing/admin/pages/{page_id}")
+	return MarziClient().get(f"/v1/publishing/admin/pages/{page_id}", service="publishing")
 
 
 @frappe.whitelist()
 @require_marzi()
 def create_page():
-	return MarziClient().post("/publishing/admin/pages", json_body=request_params())
+	return MarziClient().post(
+		"/v1/publishing/admin/pages", service="publishing", json_body=request_params()
+	)
 
 
 @frappe.whitelist()
 @require_marzi()
 def update_page(page_id: str):
 	return MarziClient().patch(
-		f"/publishing/admin/pages/{page_id}", json_body=request_params(exclude=["page_id"])
+		f"/v1/publishing/admin/pages/{page_id}",
+		service="publishing",
+		json_body=request_params(exclude=["page_id"]),
 	)
 
 
 @frappe.whitelist()
 @require_marzi()
 def publish_page(page_id: str):
-	return MarziClient().post(f"/publishing/admin/pages/{page_id}/publish")
+	return MarziClient().post(f"/v1/publishing/admin/pages/{page_id}/publish", service="publishing")
 
 
 @frappe.whitelist()
 @require_marzi()
 def archive_page(page_id: str):
-	return MarziClient().post(f"/publishing/admin/pages/{page_id}/archive")
+	return MarziClient().post(f"/v1/publishing/admin/pages/{page_id}/archive", service="publishing")

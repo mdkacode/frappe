@@ -1,0 +1,381 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "title",
+  "slug",
+  "type",
+  "status",
+  "path_prefix",
+  "template_id",
+  "col_ov2",
+  "h1",
+  "excerpt",
+  "city",
+  "category",
+  "author",
+  "published_at",
+  "created_at",
+  "sec_seo",
+  "meta_title",
+  "meta_description",
+  "primary_keyword",
+  "canonical_url",
+  "robots_index",
+  "robots_follow",
+  "sitemap_include",
+  "col_seo2",
+  "og_title",
+  "og_description",
+  "meta_keywords",
+  "secondary_keywords",
+  "twitter_card",
+  "tab_media",
+  "hero_image",
+  "hero_image_url",
+  "hero_image_alt",
+  "col_media2",
+  "mobile_hero_image",
+  "mobile_hero_image_url",
+  "featured_image",
+  "featured_image_url",
+  "og_image",
+  "og_image_url",
+  "tab_content",
+  "about_section",
+  "breadcrumb",
+  "ctas",
+  "faqs",
+  "blogs",
+  "upcoming_events",
+  "past_events"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDRAFT\nPUBLISHED\nARCHIVED",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "path_prefix",
+   "fieldtype": "Data",
+   "label": "Path Prefix",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "template_id",
+   "fieldtype": "Data",
+   "label": "Template ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_ov2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Data",
+   "label": "H1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "excerpt",
+   "fieldtype": "Small Text",
+   "label": "Excerpt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category",
+   "read_only": 1
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Data",
+   "label": "Author",
+   "read_only": 1
+  },
+  {
+   "fieldname": "published_at",
+   "fieldtype": "Data",
+   "label": "Published At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_seo",
+   "fieldtype": "Section Break",
+   "label": "SEO & Meta"
+  },
+  {
+   "fieldname": "meta_title",
+   "fieldtype": "Data",
+   "label": "Meta Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "meta_description",
+   "fieldtype": "Small Text",
+   "label": "Meta Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "primary_keyword",
+   "fieldtype": "Data",
+   "label": "Primary Keyword",
+   "read_only": 1
+  },
+  {
+   "fieldname": "canonical_url",
+   "fieldtype": "Data",
+   "label": "Canonical URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "robots_index",
+   "fieldtype": "Check",
+   "label": "Robots Index",
+   "read_only": 1
+  },
+  {
+   "fieldname": "robots_follow",
+   "fieldtype": "Check",
+   "label": "Robots Follow",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sitemap_include",
+   "fieldtype": "Check",
+   "label": "Sitemap Include",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_seo2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "og_title",
+   "fieldtype": "Data",
+   "label": "OG Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "og_description",
+   "fieldtype": "Small Text",
+   "label": "OG Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "meta_keywords",
+   "fieldtype": "Code",
+   "label": "Meta Keywords",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secondary_keywords",
+   "fieldtype": "Code",
+   "label": "Secondary Keywords",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "twitter_card",
+   "fieldtype": "Code",
+   "label": "Twitter Card",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_media",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
+   "fieldname": "hero_image",
+   "fieldtype": "Image",
+   "label": "Hero",
+   "options": "hero_image_url"
+  },
+  {
+   "fieldname": "hero_image_url",
+   "fieldtype": "Data",
+   "label": "Hero Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hero_image_alt",
+   "fieldtype": "Data",
+   "label": "Hero Alt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_media2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile_hero_image",
+   "fieldtype": "Image",
+   "label": "Mobile Hero",
+   "options": "mobile_hero_image_url"
+  },
+  {
+   "fieldname": "mobile_hero_image_url",
+   "fieldtype": "Data",
+   "label": "Mobile Hero URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "featured_image",
+   "fieldtype": "Image",
+   "label": "Featured",
+   "options": "featured_image_url"
+  },
+  {
+   "fieldname": "featured_image_url",
+   "fieldtype": "Data",
+   "label": "Featured URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "og_image",
+   "fieldtype": "Image",
+   "label": "OG Image",
+   "options": "og_image_url"
+  },
+  {
+   "fieldname": "og_image_url",
+   "fieldtype": "Data",
+   "label": "OG Image URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_content",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "about_section",
+   "fieldtype": "Code",
+   "label": "About Section",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "breadcrumb",
+   "fieldtype": "Code",
+   "label": "Breadcrumb",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ctas",
+   "fieldtype": "Code",
+   "label": "CTAs",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "faqs",
+   "fieldtype": "Code",
+   "label": "FAQs",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "blogs",
+   "fieldtype": "Code",
+   "label": "Blogs",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "upcoming_events",
+   "fieldtype": "Code",
+   "label": "Upcoming Events",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "past_events",
+   "fieldtype": "Code",
+   "label": "Past Events",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Page",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 0,
+ "image_field": "hero_image_url"
+}

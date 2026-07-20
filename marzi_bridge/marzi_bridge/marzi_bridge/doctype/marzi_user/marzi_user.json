@@ -1,0 +1,175 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-07-19 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_overview",
+  "avatar",
+  "first_name",
+  "last_name",
+  "phone",
+  "email",
+  "col_ov2",
+  "role",
+  "account_status",
+  "city",
+  "total_badges",
+  "profile_pic_url",
+  "created_at",
+  "sec_bio",
+  "bio",
+  "tab_bookings",
+  "bookings",
+  "tab_transactions",
+  "transactions"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_overview",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "avatar",
+   "fieldtype": "Image",
+   "label": "Avatar",
+   "options": "profile_pic_url"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_ov2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Select",
+   "label": "Role",
+   "options": "\nSUPER_ADMIN\nADMIN\nMEMBER",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "account_status",
+   "fieldtype": "Select",
+   "label": "Account Status",
+   "options": "\nACTIVE\nPENDING\nSUSPENDED\nREJECTED",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_badges",
+   "fieldtype": "Int",
+   "label": "Badges",
+   "read_only": 1
+  },
+  {
+   "fieldname": "profile_pic_url",
+   "fieldtype": "Data",
+   "label": "Profile Pic URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_bio",
+   "fieldtype": "Section Break",
+   "label": "Bio"
+  },
+  {
+   "fieldname": "bio",
+   "fieldtype": "Small Text",
+   "label": "Bio",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_bookings",
+   "fieldtype": "Tab Break",
+   "label": "Bookings"
+  },
+  {
+   "fieldname": "bookings",
+   "fieldtype": "Table",
+   "label": "Bookings",
+   "options": "Marzi User Booking",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_transactions",
+   "fieldtype": "Tab Break",
+   "label": "Transactions"
+  },
+  {
+   "fieldname": "transactions",
+   "fieldtype": "Table",
+   "label": "Transactions",
+   "options": "Marzi User Transaction",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi User",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "Marzi Admin"
+  },
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "first_name",
+ "track_changes": 0,
+ "image_field": "profile_pic_url"
+}

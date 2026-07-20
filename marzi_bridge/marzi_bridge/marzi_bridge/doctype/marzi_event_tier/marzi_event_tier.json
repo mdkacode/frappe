@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "creation": "2026-07-20 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tier_name",
+  "final_price_rupees",
+  "max_tickets",
+  "admissible_pax",
+  "is_best_value",
+  "list_price_rupees",
+  "discounted_price_rupees",
+  "gst_percentage",
+  "availability",
+  "description",
+  "sort_order"
+ ],
+ "fields": [
+  {
+   "fieldname": "tier_name",
+   "fieldtype": "Data",
+   "label": "Tier",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "final_price_rupees",
+   "fieldtype": "Float",
+   "label": "Final Price (\u20b9)",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "max_tickets",
+   "fieldtype": "Int",
+   "label": "Max Tickets",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "admissible_pax",
+   "fieldtype": "Int",
+   "label": "Pax / Ticket",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_best_value",
+   "fieldtype": "Check",
+   "label": "Best Value",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "list_price_rupees",
+   "fieldtype": "Float",
+   "label": "List Price (\u20b9)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discounted_price_rupees",
+   "fieldtype": "Float",
+   "label": "Discounted (\u20b9)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gst_percentage",
+   "fieldtype": "Float",
+   "label": "GST %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "availability",
+   "fieldtype": "Data",
+   "label": "Availability",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Order",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_virtual": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-07-20 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Event Tier",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

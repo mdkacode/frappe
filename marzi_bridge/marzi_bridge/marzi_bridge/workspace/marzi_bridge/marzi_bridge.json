@@ -1,0 +1,305 @@
+{
+ "app": "marzi_bridge",
+ "charts": [],
+ "content": "[{\"id\":\"mzHeader1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Marzi Bridge</b></span>\",\"col\":12}},{\"id\":\"mzPara1\",\"type\":\"paragraph\",\"data\":{\"text\":\"Live views of the Backend-for-org (marzi) data. Configure the backend connection in <b>Marzi Bridge Settings</b>, then link a phone in <b>Marzi User Link</b>.\",\"col\":12}},{\"id\":\"mzSc1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Marzi Bridge Settings\",\"col\":3}},{\"id\":\"mzSc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Marzi User Link\",\"col\":3}},{\"id\":\"mzSpacer1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"mzCardCfg\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}},{\"id\":\"mzCardEvt\",\"type\":\"card\",\"data\":{\"card_name\":\"Event Management\",\"col\":4}},{\"id\":\"mzCardComm\",\"type\":\"card\",\"data\":{\"card_name\":\"Communities\",\"col\":4}},{\"id\":\"mzCardCfg2\",\"type\":\"card\",\"data\":{\"card_name\":\"App Configuration\",\"col\":4}},{\"id\":\"mzCardContent\",\"type\":\"card\",\"data\":{\"card_name\":\"Content\",\"col\":4}},{\"id\":\"mzCardAssets\",\"type\":\"card\",\"data\":{\"card_name\":\"Users & Assets\",\"col\":4}}]",
+ "creation": "2026-07-19 00:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "integration",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Marzi Bridge",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marzi Bridge Settings",
+   "link_count": 0,
+   "link_to": "Marzi Bridge Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marzi User Link",
+   "link_count": 0,
+   "link_to": "Marzi User Link",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Event Management",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Events",
+   "link_count": 0,
+   "link_to": "Marzi Event",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bookings",
+   "link_count": 0,
+   "link_to": "Marzi Booking",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Event Library — FAQ Groups",
+   "link_count": 0,
+   "link_to": "Marzi FAQ Group",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Event Library — Info Items",
+   "link_count": 0,
+   "link_to": "Marzi Info Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Communities",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Groups",
+   "link_count": 0,
+   "link_to": "Marzi Group",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "WhatsApp Conversations",
+   "link_count": 0,
+   "link_to": "Marzi WhatsApp Conversation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Escalations",
+   "link_count": 0,
+   "link_to": "Marzi Escalation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Moderation — Blocked Messages",
+   "link_count": 0,
+   "link_to": "Marzi Blocked Message",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "App Configuration",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Statuses",
+   "link_count": 0,
+   "link_to": "Marzi Status",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Testimonies",
+   "link_count": 0,
+   "link_to": "Marzi Testimony",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Speakers",
+   "link_count": 0,
+   "link_to": "Marzi Speaker",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Content",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Blog Posts",
+   "link_count": 0,
+   "link_to": "Marzi Blog Post",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pages",
+   "link_count": 0,
+   "link_to": "Marzi Page",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Campaigns",
+   "link_count": 0,
+   "link_to": "Marzi Campaign",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Templates",
+   "link_count": 0,
+   "link_to": "Marzi Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Users & Assets",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Users",
+   "link_count": 0,
+   "link_to": "Marzi User",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Media",
+   "link_count": 0,
+   "link_to": "Marzi Media",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-07-20 06:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marzi Bridge",
+ "name": "Marzi Bridge",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 100.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Marzi Bridge Settings",
+   "link_to": "Marzi Bridge Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Marzi User Link",
+   "link_to": "Marzi User Link",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Marzi Bridge",
+ "type": "Workspace"
+}
