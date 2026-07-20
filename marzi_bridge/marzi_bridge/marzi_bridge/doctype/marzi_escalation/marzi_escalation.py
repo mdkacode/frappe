@@ -20,6 +20,9 @@ class MarziEscalation(ApiDocument):
 	api_merge_keys = ()
 	api_field_aliases = {'agentHandling': 'agent_handling', 'updatedAt': 'updated_at', 'resolvedAt': 'resolved_at', 'resolvedBy': 'resolved_by', 'userMessage': 'user_message'}
 	api_child_tables = {}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

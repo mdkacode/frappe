@@ -20,6 +20,9 @@ class MarziPage(ApiDocument):
 	api_merge_keys = ()
 	api_field_aliases = {'templateId': 'template_id', 'pathPrefix': 'path_prefix', 'pageType': 'type', 'metaTitle': 'meta_title', 'metaDescription': 'meta_description', 'metaKeywords': 'meta_keywords', 'primaryKeyword': 'primary_keyword', 'secondaryKeywords': 'secondary_keywords', 'robotsIndex': 'robots_index', 'robotsFollow': 'robots_follow', 'sitemapInclude': 'sitemap_include', 'canonicalUrl': 'canonical_url', 'heroImageUrl': 'hero_image_url', 'heroImageAlt': 'hero_image_alt', 'mobileHeroImageUrl': 'mobile_hero_image_url', 'featuredImageUrl': 'featured_image_url', 'ogImageUrl': 'og_image_url', 'ogTitle': 'og_title', 'ogDescription': 'og_description', 'twitterCard': 'twitter_card', 'aboutSection': 'about_section', 'publishedAt': 'published_at', 'createdAt': 'created_at', 'updatedAt': 'updated_at'}
 	api_child_tables = {}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

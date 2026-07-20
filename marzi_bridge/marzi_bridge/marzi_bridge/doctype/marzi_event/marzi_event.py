@@ -20,6 +20,9 @@ class MarziEvent(ApiDocument):
 	api_merge_keys = ()
 	api_field_aliases = {}
 	api_child_tables = {'attendees': {'doctype': 'Marzi Event Attendee', 'source': '/events/{id}/attendees', 'list_key': 'attendees', 'aliases': {'name': 'attendee_name'}}, 'tiers': {'doctype': 'Marzi Event Tier', 'source': 'item', 'item_key': 'tiers', 'aliases': {}}}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

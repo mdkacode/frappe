@@ -20,6 +20,9 @@ class MarziGroup(ApiDocument):
 	api_merge_keys = ()
 	api_field_aliases = {'name': 'group_name'}
 	api_child_tables = {'members': {'doctype': 'Marzi Group Member', 'source': '/groups/{id}/members', 'list_key': 'members', 'aliases': {}}, 'posts': {'doctype': 'Marzi Group Post', 'source': '/groups/{id}/posts', 'list_key': 'posts', 'aliases': {}}}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

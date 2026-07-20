@@ -20,6 +20,9 @@ class MarziTestimony(ApiDocument):
 	api_merge_keys = ()
 	api_field_aliases = {'name': 'person_name', 'author_name': 'person_name', 'content': 'quote', 'author_pic_url': 'image_url'}
 	api_child_tables = {}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

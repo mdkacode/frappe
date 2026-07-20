@@ -18,8 +18,11 @@ class MarziUser(ApiDocument):
 	api_auth = True
 	api_single_from_list = False
 	api_merge_keys = ()
-	api_field_aliases = {'firstName': 'first_name', 'lastName': 'last_name', 'accountStatus': 'account_status', 'createdAt': 'created_at', 'profilePicUrl': 'profile_pic_url', 'totalBadges': 'total_badges'}
+	api_field_aliases = {'firstName': 'first_name', 'lastName': 'last_name', 'accountStatus': 'account_status', 'createdAt': 'created_at', 'profilePicUrl': 'profile_pic_url', 'totalBadges': 'total_badges', 'totalEvents': 'total_events', 'totalTransactions': 'total_transactions', 'totalPosts': 'total_posts', 'eventsBooked': 'events_booked', 'isOnboardingCompleted': 'is_onboarding_completed', 'isFirstDiscountApplied': 'is_first_discount_applied'}
 	api_child_tables = {'bookings': {'doctype': 'Marzi User Booking', 'source': 'item', 'item_key': 'events', 'aliases': {'bookingId': 'booking_id', 'eventId': 'event_id', 'eventTitle': 'event_title', 'eventStartTime': 'event_start_time', 'seatsBooked': 'seats_booked', 'confirmationNumber': 'confirmation_number', 'totalAmount': 'total_amount', 'paidAt': 'paid_at', 'createdAt': 'created_at'}}, 'transactions': {'doctype': 'Marzi User Transaction', 'source': 'item', 'item_key': 'transactions', 'aliases': {'transactionId': 'transaction_id', 'eventId': 'event_id', 'eventTitle': 'event_title', 'totalAmount': 'total_amount', 'discountAmount': 'discount_amount', 'promoCode': 'promo_code', 'confirmationNumber': 'confirmation_number', 'razorpayOrderId': 'razorpay_order_id', 'razorpayPaymentId': 'razorpay_payment_id', 'paidAt': 'paid_at', 'createdAt': 'created_at'}}}
+	api_list_params = {'limit': 50}
+	api_cursor_key = 'nextCursor'
+	api_detail_merge_list = True
 
 	@staticmethod
 	def get_list(**kwargs):

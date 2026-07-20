@@ -20,6 +20,9 @@ class MarziCampaign(ApiDocument):
 	api_merge_keys = ()
 	api_field_aliases = {}
 	api_child_tables = {}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

@@ -20,6 +20,9 @@ class MarziBlogPost(ApiDocument):
 	api_merge_keys = ('tags',)
 	api_field_aliases = {}
 	api_child_tables = {'tags': {'doctype': 'Marzi Blog Tag', 'source': 'item', 'item_key': 'tags', 'aliases': {'name': 'tag_name'}}}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

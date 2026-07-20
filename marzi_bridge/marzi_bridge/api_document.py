@@ -52,6 +52,18 @@ class ApiDocument(Document):
 	# A richer GET-by-id detail route when it differs from the list endpoint
 	# (e.g. list = /admin/events, detail = /events/<id>). Falls back to api_endpoint.
 	api_detail_endpoint: str | None = None
+	# Extra query params sent on every list fetch (e.g. {"limit": 50}).
+	api_list_params: dict = {}
+	# Cursor pagination: when the list envelope carries a cursor (e.g. "nextCursor"),
+	# _fetch_collection walks pages (passing it back as api_cursor_param) until the
+	# rows needed are gathered, the cursor runs out, or api_max_pages is hit.
+	api_cursor_key: str | None = None
+	api_cursor_param: str = "cursor"
+	api_max_pages: int = 10
+	# Some detail endpoints return a SUBSET of the list row (e.g. GET /users/<id> is a
+	# public-profile shape without phone/email/role). Merge the list row underneath the
+	# detail object so the Form shows both.
+	api_detail_merge_list: bool = False
 	# Sibling envelope keys to fold onto the item on a detail read. The blog detail
 	# returns {"post": {...}, "tags": [...]}; merging "tags" lets a child table map it.
 	api_merge_keys: tuple = ()
@@ -146,20 +158,60 @@ class ApiDocument(Document):
 
 	# -- classmethod helpers backing the (static) list/count ------------------
 	@classmethod
+	def _fetch_collection(cls, need: int | None = None) -> list:
+		"""Fetch the backend collection; walk cursor pages when declared.
+
+		`need` stops the walk once that many rows are gathered (list-view paging);
+		None walks to the end (bounded by api_max_pages).
+		"""
+		client = MarziClient()
+		rows, cursor, pages = [], None, 0
+		while True:
+			params = dict(cls.api_list_params or {})
+			if cursor:
+				params[cls.api_cursor_param] = cursor
+			data = client.get(
+				cls.api_endpoint,
+				service=cls.api_service,
+				auth=cls.api_auth,
+				params=params or None,
+			)
+			batch = cls._unwrap_list(data)
+			rows.extend(batch)
+			pages += 1
+			cursor = cls._dig(data, cls.api_cursor_key) if cls.api_cursor_key else None
+			if (
+				not cursor
+				or not batch
+				or pages >= cls.api_max_pages
+				or (need is not None and len(rows) >= need)
+			):
+				return rows
+
+	@classmethod
 	def _api_list(cls, filters=None, start=0, page_length=20, order_by=None, **kwargs):
-		data = MarziClient().get(cls.api_endpoint, service=cls.api_service, auth=cls.api_auth)
-		rows = [cls._to_row(obj) for obj in cls._unwrap_list(data)]
-		# Backends here return whole collections; paginate locally to match the list view.
 		try:
 			start, page_length = int(start or 0), int(page_length or 0)
 		except (TypeError, ValueError):
 			start, page_length = 0, 0
+		need = (start + page_length) if page_length else None
+		rows = [cls._to_row(obj) for obj in cls._fetch_collection(need=need)]
+		# Backends return whole collections (or cursor pages); slice locally.
 		return rows[start : start + page_length] if page_length else rows[start:]
 
 	@classmethod
 	def _api_count(cls, filters=None, **kwargs) -> int:
-		data = MarziClient().get(cls.api_endpoint, service=cls.api_service, auth=cls.api_auth)
-		return len(cls._unwrap_list(data))
+		# Counting a cursor-paginated collection walks every page — cache briefly so
+		# each list-view refresh doesn't re-walk the backend.
+		if cls.api_cursor_key:
+			key = f"marzi_bridge_count::{cls.DOCTYPE}"
+			cached = frappe.cache.get_value(key)
+			if cached is not None:
+				return int(cached)
+			count = len(cls._fetch_collection())
+			frappe.cache.set_value(key, count, expires_in_sec=120)
+			return count
+		return len(cls._fetch_collection())
 
 	# -- virtual doctype contract: instance methods ---------------------------
 	def load_from_db(self):
@@ -177,6 +229,15 @@ class ApiDocument(Document):
 					sibling = self._dig(data, mk) if isinstance(data, dict) else None
 					if sibling is not None:
 						obj = {**obj, mk: sibling}
+			# Some detail shapes omit list-row fields (GET /users/<id> has no
+			# phone/email/role); merge the list row underneath, detail winning.
+			if self.api_detail_merge_list and isinstance(obj, dict):
+				try:
+					list_row = self._find_in_list(self.name)
+				except Exception:  # noqa: BLE001 — merge is best-effort
+					list_row = None
+				if list_row:
+					obj = {**list_row, **obj}
 		if not obj:
 			raise frappe.DoesNotExistError
 		row = self._to_row(obj)
@@ -213,8 +274,7 @@ class ApiDocument(Document):
 
 	@classmethod
 	def _find_in_list(cls, record_id):
-		data = MarziClient().get(cls.api_endpoint, service=cls.api_service, auth=cls.api_auth)
-		for obj in cls._unwrap_list(data):
+		for obj in cls._fetch_collection():
 			if str((obj or {}).get(cls.api_id_field)) == str(record_id):
 				return obj
 		return None

@@ -418,6 +418,12 @@ SPECS = [
 		"list_key": "items",
 		"item_key": None,
 		"single_from_list": False,
+		# /users is cursor-paginated (max 50/page): walk pages for list/count/find.
+		"list_params": {"limit": 50},
+		"cursor_key": "nextCursor",
+		# GET /users/{id} is a profile subset (no phone/email/role/status/created);
+		# merge the list row underneath so the Form shows the complete record.
+		"detail_merge_list": True,
 		"title_field": "first_name",
 		"image_field": "profile_pic_url",
 		"aliases": {
@@ -427,6 +433,12 @@ SPECS = [
 			"createdAt": "created_at",
 			"profilePicUrl": "profile_pic_url",
 			"totalBadges": "total_badges",
+			"totalEvents": "total_events",
+			"totalTransactions": "total_transactions",
+			"totalPosts": "total_posts",
+			"eventsBooked": "events_booked",
+			"isOnboardingCompleted": "is_onboarding_completed",
+			"isFirstDiscountApplied": "is_first_discount_applied",
 		},
 		"child_tables": {
 			"bookings": {
@@ -473,11 +485,21 @@ SPECS = [
 			f("email", "Email", "Data"),
 			col("col_ov2"),
 			f("role", "Role", "Select", "\nSUPER_ADMIN\nADMIN\nMEMBER", 1),
-			f("account_status", "Account Status", "Select", "\nACTIVE\nPENDING\nSUSPENDED\nREJECTED", 1),
+			f("account_status", "Account Status", "Select", "\nACTIVE\nPENDING_VERIFICATION\nSUSPENDED\nDELETED", 1),
 			f("city", "City", "Data"),
-			f("total_badges", "Badges", "Int"),
 			f("profile_pic_url", "Profile Pic URL", "Data"),
 			f("created_at", "Created At", "Data"),
+			sec("sec_stats", "Stats"),
+			f("total_events", "Events", "Int"),
+			f("total_transactions", "Transactions", "Int"),
+			col("col_stats2"),
+			f("total_posts", "Posts", "Int"),
+			f("total_badges", "Badges", "Int"),
+			sec("sec_flags", "Journey"),
+			f("events_booked", "Events Booked", "Int", None, 1),
+			f("is_onboarding_completed", "Onboarding Completed", "Check"),
+			col("col_flags2"),
+			f("is_first_discount_applied", "First Discount Applied", "Check"),
 			sec("sec_bio", "Bio"),
 			f("bio", "Bio", "Small Text"),
 			tab("tab_bookings", "Bookings"),
@@ -981,6 +1003,9 @@ class {klass}(ApiDocument):
 	api_merge_keys = {merge_keys!r}
 	api_field_aliases = {aliases!r}
 	api_child_tables = {child_tables!r}
+	api_list_params = {list_params!r}
+	api_cursor_key = {cursor_key!r}
+	api_detail_merge_list = {detail_merge_list!r}
 
 	@staticmethod
 	def get_list(**kwargs):
@@ -1035,6 +1060,9 @@ def build_controller(spec):
 		merge_keys=spec.get("merge_keys", ()),
 		aliases=spec["aliases"],
 		child_tables=spec.get("child_tables", {}),
+		list_params=spec.get("list_params", {}),
+		cursor_key=spec.get("cursor_key"),
+		detail_merge_list=spec.get("detail_merge_list", False),
 		klass=controller_class(spec["doctype"]),
 	)
 

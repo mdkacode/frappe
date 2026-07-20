@@ -18,9 +18,19 @@
   "role",
   "account_status",
   "city",
-  "total_badges",
   "profile_pic_url",
   "created_at",
+  "sec_stats",
+  "total_events",
+  "total_transactions",
+  "col_stats2",
+  "total_posts",
+  "total_badges",
+  "sec_flags",
+  "events_booked",
+  "is_onboarding_completed",
+  "col_flags2",
+  "is_first_discount_applied",
   "sec_bio",
   "bio",
   "tab_bookings",
@@ -83,7 +93,7 @@
    "fieldname": "account_status",
    "fieldtype": "Select",
    "label": "Account Status",
-   "options": "\nACTIVE\nPENDING\nSUSPENDED\nREJECTED",
+   "options": "\nACTIVE\nPENDING_VERIFICATION\nSUSPENDED\nDELETED",
    "in_list_view": 1,
    "read_only": 1
   },
@@ -91,12 +101,6 @@
    "fieldname": "city",
    "fieldtype": "Data",
    "label": "City",
-   "read_only": 1
-  },
-  {
-   "fieldname": "total_badges",
-   "fieldtype": "Int",
-   "label": "Badges",
    "read_only": 1
   },
   {
@@ -109,6 +113,67 @@
    "fieldname": "created_at",
    "fieldtype": "Data",
    "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_stats",
+   "fieldtype": "Section Break",
+   "label": "Stats"
+  },
+  {
+   "fieldname": "total_events",
+   "fieldtype": "Int",
+   "label": "Events",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_transactions",
+   "fieldtype": "Int",
+   "label": "Transactions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_stats2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_posts",
+   "fieldtype": "Int",
+   "label": "Posts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_badges",
+   "fieldtype": "Int",
+   "label": "Badges",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_flags",
+   "fieldtype": "Section Break",
+   "label": "Journey"
+  },
+  {
+   "fieldname": "events_booked",
+   "fieldtype": "Int",
+   "label": "Events Booked",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_onboarding_completed",
+   "fieldtype": "Check",
+   "label": "Onboarding Completed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_flags2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_first_discount_applied",
+   "fieldtype": "Check",
+   "label": "First Discount Applied",
    "read_only": 1
   },
   {

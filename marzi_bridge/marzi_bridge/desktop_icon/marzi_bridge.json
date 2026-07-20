@@ -1,0 +1,21 @@
+{
+ "app": "marzi_bridge",
+ "bg_color": "gray",
+ "creation": "2026-07-20 22:43:13.942872",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Marzi Bridge",
+ "link_to": "Marzi Bridge",
+ "link_type": "Workspace Sidebar",
+ "logo_url": "/assets/marzi_bridge/images/marzi-favicon.png",
+ "modified": "2026-07-20 22:51:01.292511",
+ "modified_by": "Administrator",
+ "name": "Marzi Bridge",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}

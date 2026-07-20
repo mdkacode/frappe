@@ -5,6 +5,21 @@ app_description = "Server-side proxy from Frappe to the Backend-for-org (marzi) 
 app_email = "prabhas.mudhiveti@spreetail.com"
 app_license = "MIT"
 
+# Branding — replace the Frappe marks with Marzi's
+# ------------------------------------------------------------------------------
+# Navbar + login page logo (get_app_logo falls back to this hook when neither
+# Website Settings nor Navbar Settings sets app_logo).
+app_logo_url = "/assets/marzi_bridge/images/marzi-logo.png"
+
+# Favicon + login splash (merged into the website render context).
+website_context = {
+	"favicon": "/assets/marzi_bridge/images/marzi-favicon.png",
+	"splash_image": "/assets/marzi_bridge/images/marzi-logo.png",
+}
+
+# Desk CSS: Marzi logo atop the left side navigation.
+app_include_css = "/assets/marzi_bridge/css/marzi_branding.css"
+
 # Roles / setup
 # ------------------------------------------------------------------------------
 after_install = "marzi_bridge.install.after_install"
@@ -20,9 +35,10 @@ fixtures = [
 add_to_apps_screen = [
 	{
 		"name": "marzi_bridge",
-		"logo": "/assets/frappe/images/frappe-framework-logo.svg",
+		"logo": "/assets/marzi_bridge/images/marzi-favicon.png",
 		"title": "Marzi Bridge",
-		"route": "/app/marzi-bridge",
+		# Land on the (API-backed) Marzi User list — the app's home screen.
+		"route": "/desk/marzi-user",
 		"has_permission": "marzi_bridge.permissions.check_app_permission",
 	}
 ]

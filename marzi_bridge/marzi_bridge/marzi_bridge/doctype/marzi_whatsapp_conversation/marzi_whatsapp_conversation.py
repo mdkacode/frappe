@@ -20,6 +20,9 @@ class MarziWhatsAppConversation(ApiDocument):
 	api_merge_keys = ()
 	api_field_aliases = {'name': 'contact_name', 'fullName': 'full_name', 'lastMessage': 'last_message', 'lastMessageDirection': 'last_message_direction', 'lastInteraction': 'last_interaction', 'flowState': 'flow_state', 'conversationId': 'conversation_id'}
 	api_child_tables = {}
+	api_list_params = {}
+	api_cursor_key = None
+	api_detail_merge_list = False
 
 	@staticmethod
 	def get_list(**kwargs):

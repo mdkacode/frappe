@@ -1,0 +1,28 @@
+/* Marzi Bridge desk branding — injected via app_include_css (hooks.py). */
+
+/* Sidebar header: replace the generated gray "M" initial-avatar with the Marzi
+ * logo mark. set_header_icon() renders an initials avatar into .header-logo
+ * whenever the workspace has sidebar_data, so we hide that and paint our mark. */
+.sidebar-header .sidebar-item-icon {
+	background-color: transparent !important;
+}
+
+.sidebar-header .header-logo {
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+	background-image: url("/assets/marzi_bridge/images/marzi-favicon.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+/* Hide the auto-generated initials markup inside the logo box. */
+.sidebar-header .header-logo > * {
+	visibility: hidden;
+}
+
+/* Remove the "Notification" item from the sidebar. */
+.sidebar-notification {
+	display: none !important;
+}
