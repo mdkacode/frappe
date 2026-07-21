@@ -26,3 +26,204 @@
 .sidebar-notification {
 	display: none !important;
 }
+
+/* =====================================================================
+ * Record "overview" header (rendered by public/js/marzi_overview.js into
+ * the overview_banner HTML field at the top of every parent Form).
+ * Styled 1:1 after admin-v2's detail pages (event-detail / user-detail):
+ * flat title row with pill badges, optional round avatar or full-width
+ * hero image, and a grid of plain bordered info cards. No gradients,
+ * no shadows — tailwind-equivalent spacing and palette.
+ * ===================================================================== */
+
+/* The HTML field wrapper adds its own control margins — keep the header flush. */
+.frappe-control[data-fieldname="overview_banner"] {
+	margin-bottom: 0;
+}
+
+.marzi-ov {
+	display: flex;
+	flex-direction: column;
+	gap: 16px; /* admin-v2 gap-4 between header / hero / cards */
+	margin: 4px 0 24px;
+}
+
+/* --- header row: [avatar] title + badges, mono id below ---------------- */
+.marzi-ov-head {
+	display: flex;
+	align-items: center;
+	gap: 12px; /* gap-3 */
+}
+
+/* Round avatar, admin-v2 `Avatar size-12` (48px). */
+.marzi-avatar {
+	position: relative;
+	flex: 0 0 auto;
+	width: 48px;
+	height: 48px;
+	border-radius: 9999px;
+	overflow: hidden;
+	background: var(--bg-light-gray, #f3f4f6);
+	border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.marzi-avatar-fb {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--text-muted, #6b7280);
+}
+
+.marzi-avatar img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 1;
+}
+
+.marzi-ov-idn {
+	min-width: 0;
+}
+
+/* Title + inline badges, admin-v2 `flex items-center gap-2.5`. */
+.marzi-ov-titlerow {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+/* h1: text-2xl font-semibold leading-tight */
+.marzi-ov-title {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.25;
+	color: var(--heading-color, #111827);
+}
+
+/* text-xs text-muted-foreground font-mono */
+.marzi-ov-sub {
+	margin: 2px 0 0;
+	font-size: 0.75rem;
+	color: var(--text-muted, #6b7280);
+	font-family: var(--font-stack-monospace, ui-monospace, monospace);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Pill badge, admin-v2 `Badge border-0 text-xs font-medium` + statusColor(). */
+.marzi-badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 2px 10px;
+	border-radius: 9999px;
+	font-size: 0.75rem;
+	font-weight: 500;
+	line-height: 1.35;
+	background: #f3f4f6; /* bg-gray-100 */
+	color: #4b5563; /* text-gray-600 */
+}
+
+.marzi-badge.is-green {
+	background: #dcfce7; /* bg-green-100 */
+	color: #15803d; /* text-green-700 */
+}
+.marzi-badge.is-blue {
+	background: #dbeafe; /* bg-blue-100 */
+	color: #1d4ed8; /* text-blue-700 */
+}
+.marzi-badge.is-red {
+	background: #fee2e2; /* bg-red-100 */
+	color: #b91c1c; /* text-red-700 */
+}
+.marzi-badge.is-amber {
+	background: #fef3c7; /* bg-amber-100 */
+	color: #b45309; /* text-amber-700 */
+}
+.marzi-badge.is-gray {
+	background: #f3f4f6;
+	color: #4b5563;
+}
+
+/* Full-width hero image, admin-v2 `w-full max-h-72 rounded-lg border object-cover`. */
+.marzi-hero-img {
+	width: 100%;
+	max-height: 288px;
+	border-radius: 8px;
+	border: 1px solid var(--border-color, #e5e7eb);
+	object-fit: cover;
+}
+
+/* Info-card grid, admin-v2 `grid grid-cols-2 md:grid-cols-4 gap-3` with
+ * `flex gap-3 rounded-lg border p-3` cards. */
+.marzi-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 12px;
+}
+
+.marzi-card {
+	border: 1px solid var(--border-color, #e5e7eb);
+	border-radius: 8px;
+	padding: 12px;
+	background: var(--card-bg, transparent);
+	min-width: 0;
+}
+
+/* label: text-xs text-muted-foreground */
+.marzi-card-k {
+	margin: 0 0 2px;
+	font-size: 0.75rem;
+	color: var(--text-muted, #6b7280);
+}
+
+/* value: text-sm font-medium */
+.marzi-card-v {
+	margin: 0;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--text-color, #111827);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* =====================================================================
+ * Form polish — a cleaner, more modern editing surface for the Marzi
+ * records (section headings, inputs, primary action).
+ * ===================================================================== */
+.marzi-ov + .form-page .section-head,
+[data-doctype^="Marzi "] .form-section .section-head {
+	font-size: 0.72rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--text-muted, #8d99a6);
+	font-weight: 600;
+}
+
+/* Softer, rounded inputs on Marzi forms. */
+[data-doctype^="Marzi "] .form-control,
+[data-doctype^="Marzi "] .input-with-feedback,
+[data-doctype^="Marzi "] .like-disabled-input {
+	border-radius: 8px;
+}
+
+/* Section cards get a little breathing room + a hairline divider. */
+[data-doctype^="Marzi "] .form-section:not(:first-child) {
+	border-top: 1px solid var(--border-color, #ebeef0);
+	padding-top: 6px;
+	margin-top: 4px;
+}
+
+/* Tabs: cleaner active underline in Marzi purple. */
+[data-doctype^="Marzi "] .form-tabs .nav-link.active {
+	border-bottom-color: var(--marzi-purple, #7c3aed);
+	color: var(--marzi-purple-deep, #5b21b6);
+}

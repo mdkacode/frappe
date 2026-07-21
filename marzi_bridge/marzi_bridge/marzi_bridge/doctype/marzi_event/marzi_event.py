@@ -23,6 +23,17 @@ class MarziEvent(ApiDocument):
 	api_list_params = {}
 	api_cursor_key = None
 	api_detail_merge_list = False
+	api_write_fields = ('title', 'short_description', 'about_event', 'about_event_html', 'event_mode', 'venue_name', 'address_line1', 'address_line2', 'city_id', 'state', 'postal_code', 'latitude', 'longitude', 'booking_start_time', 'booking_end_time', 'event_start_time', 'event_end_time', 'max_capacity', 'booking_limit_per_user', 'ticket_price_rupees', 'gst_percentage', 'hero_image_cdn_url', 'hero_video_url', 'online_event_url', 'online_access_code', 'tags', 'categories', 'gallery_image_urls', 'video_urls')
+	api_write_endpoint = '/events'
+	api_write_id_field = None
+	api_update_method = 'PUT'
+	api_can_create = True
+	api_can_delete = True
+	api_write_aliases = {'hero_image_cdn_url': 'hero_image_url'}
+	api_nested_fields = {}
+	api_read_nested = {}
+	api_write_child_tables = {}
+	api_write_array_fields = ()
 
 	@staticmethod
 	def get_list(**kwargs):

@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "image",
   "description",
   "status",
@@ -27,6 +28,10 @@
    "label": "Overview"
   },
   {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "image",
    "fieldtype": "Image",
    "label": "Image",
@@ -37,7 +42,7 @@
    "fieldtype": "Small Text",
    "label": "Description",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "status",
@@ -45,14 +50,13 @@
    "label": "Status",
    "options": "\ndraft\npublished",
    "in_list_view": 1,
-   "read_only": 1
+   "default": "draft"
   },
   {
    "fieldname": "visible_to_users",
    "fieldtype": "Check",
    "label": "Visible To Users",
-   "in_list_view": 1,
-   "read_only": 1
+   "in_list_view": 1
   },
   {
    "fieldname": "col_ov2",
@@ -101,11 +105,23 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
@@ -113,5 +129,6 @@
  "states": [],
  "title_field": "description",
  "track_changes": 0,
- "image_field": "image_url"
+ "image_field": "image_url",
+ "quick_entry": 1
 }

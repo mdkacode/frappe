@@ -9,14 +9,27 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
-  "campaign_name",
-  "max_discount",
-  "is_active",
+  "overview_banner",
+  "name",
+  "slug",
+  "status",
   "col_ov2",
-  "start_date",
-  "end_date",
+  "discount_campaign_name",
+  "page_count",
   "created_at",
-  "updated_at"
+  "updated_at",
+  "sec_schedule",
+  "starts_at",
+  "ends_at",
+  "sec_about",
+  "description",
+  "sec_utm",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "col_utm2",
+  "utm_term",
+  "utm_content"
  ],
  "fields": [
   {
@@ -25,23 +38,28 @@
    "label": "Overview"
   },
   {
-   "fieldname": "campaign_name",
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "name",
    "fieldtype": "Data",
-   "label": "Campaign Name",
+   "label": "Name",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
-   "fieldname": "max_discount",
-   "fieldtype": "Float",
-   "label": "Max Discount (\u20b9)",
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
-   "fieldname": "is_active",
-   "fieldtype": "Check",
-   "label": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDRAFT\nACTIVE\nARCHIVED",
    "in_list_view": 1,
    "read_only": 1
   },
@@ -50,16 +68,15 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "start_date",
+   "fieldname": "discount_campaign_name",
    "fieldtype": "Data",
-   "label": "Start Date",
-   "in_list_view": 1,
-   "read_only": 1
+   "label": "Discount Campaign"
   },
   {
-   "fieldname": "end_date",
-   "fieldtype": "Data",
-   "label": "End Date",
+   "fieldname": "page_count",
+   "fieldtype": "Int",
+   "label": "Pages",
+   "in_list_view": 1,
    "read_only": 1
   },
   {
@@ -73,6 +90,65 @@
    "fieldtype": "Data",
    "label": "Updated At",
    "read_only": 1
+  },
+  {
+   "fieldname": "sec_schedule",
+   "fieldtype": "Section Break",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "starts_at",
+   "fieldtype": "Data",
+   "label": "Starts At (ISO 8601)"
+  },
+  {
+   "fieldname": "ends_at",
+   "fieldtype": "Data",
+   "label": "Ends At (ISO 8601)"
+  },
+  {
+   "fieldname": "sec_about",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "sec_utm",
+   "fieldtype": "Section Break",
+   "label": "Default UTM"
+  },
+  {
+   "fieldname": "utm_source",
+   "fieldtype": "Data",
+   "label": "UTM Source"
+  },
+  {
+   "fieldname": "utm_medium",
+   "fieldtype": "Data",
+   "label": "UTM Medium"
+  },
+  {
+   "fieldname": "utm_campaign",
+   "fieldtype": "Data",
+   "label": "UTM Campaign"
+  },
+  {
+   "fieldname": "col_utm2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "utm_term",
+   "fieldtype": "Data",
+   "label": "UTM Term"
+  },
+  {
+   "fieldname": "utm_content",
+   "fieldtype": "Data",
+   "label": "UTM Content"
   }
  ],
  "index_web_pages_for_search": 0,
@@ -87,16 +163,29 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "campaign_name",
- "track_changes": 0
+ "title_field": "name",
+ "track_changes": 0,
+ "quick_entry": 1
 }

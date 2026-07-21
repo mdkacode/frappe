@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "title",
   "status",
   "event_mode",
@@ -78,11 +79,15 @@
    "label": "Overview"
   },
   {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Title",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "status",
@@ -97,7 +102,7 @@
    "fieldtype": "Select",
    "label": "Mode",
    "options": "\nOFFLINE\nONLINE",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "slug",
@@ -109,7 +114,7 @@
    "fieldname": "short_description",
    "fieldtype": "Small Text",
    "label": "Short Description",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "sec_schedule",
@@ -119,15 +124,13 @@
   {
    "fieldname": "event_start_time",
    "fieldtype": "Data",
-   "label": "Start",
-   "in_list_view": 1,
-   "read_only": 1
+   "label": "Start (ISO 8601)",
+   "in_list_view": 1
   },
   {
    "fieldname": "event_end_time",
    "fieldtype": "Data",
-   "label": "End",
-   "read_only": 1
+   "label": "End (ISO 8601)"
   },
   {
    "fieldname": "col_sched2",
@@ -136,14 +139,12 @@
   {
    "fieldname": "booking_start_time",
    "fieldtype": "Data",
-   "label": "Booking Opens",
-   "read_only": 1
+   "label": "Booking Opens (ISO 8601)"
   },
   {
    "fieldname": "booking_end_time",
    "fieldtype": "Data",
-   "label": "Booking Closes",
-   "read_only": 1
+   "label": "Booking Closes (ISO 8601)"
   },
   {
    "fieldname": "timezone_id",
@@ -159,8 +160,7 @@
   {
    "fieldname": "venue_name",
    "fieldtype": "Data",
-   "label": "Venue",
-   "read_only": 1
+   "label": "Venue"
   },
   {
    "fieldname": "city_name",
@@ -172,32 +172,27 @@
   {
    "fieldname": "city_id",
    "fieldtype": "Data",
-   "label": "City ID",
-   "read_only": 1
+   "label": "City ID"
   },
   {
    "fieldname": "address_line1",
    "fieldtype": "Data",
-   "label": "Address 1",
-   "read_only": 1
+   "label": "Address 1"
   },
   {
    "fieldname": "address_line2",
    "fieldtype": "Data",
-   "label": "Address 2",
-   "read_only": 1
+   "label": "Address 2"
   },
   {
    "fieldname": "state",
    "fieldtype": "Data",
-   "label": "State",
-   "read_only": 1
+   "label": "State"
   },
   {
    "fieldname": "postal_code",
    "fieldtype": "Data",
-   "label": "Postal Code",
-   "read_only": 1
+   "label": "Postal Code"
   },
   {
    "fieldname": "col_venue2",
@@ -206,26 +201,23 @@
   {
    "fieldname": "latitude",
    "fieldtype": "Data",
-   "label": "Latitude",
-   "read_only": 1
+   "label": "Latitude"
   },
   {
    "fieldname": "longitude",
    "fieldtype": "Data",
-   "label": "Longitude",
-   "read_only": 1
+   "label": "Longitude"
   },
   {
    "fieldname": "online_event_url",
    "fieldtype": "Data",
    "label": "Online URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "online_access_code",
    "fieldtype": "Data",
-   "label": "Access Code",
-   "read_only": 1
+   "label": "Access Code"
   },
   {
    "fieldname": "sec_pricing",
@@ -234,15 +226,13 @@
   },
   {
    "fieldname": "ticket_price_rupees",
-   "fieldtype": "Float",
-   "label": "Ticket Price (\u20b9)",
-   "read_only": 1
+   "fieldtype": "Int",
+   "label": "Ticket Price (\u20b9)"
   },
   {
    "fieldname": "gst_percentage",
    "fieldtype": "Float",
-   "label": "GST %",
-   "read_only": 1
+   "label": "GST %"
   },
   {
    "fieldname": "final_amount",
@@ -258,14 +248,12 @@
   {
    "fieldname": "max_capacity",
    "fieldtype": "Int",
-   "label": "Max Capacity",
-   "read_only": 1
+   "label": "Max Capacity"
   },
   {
    "fieldname": "booking_limit_per_user",
    "fieldtype": "Int",
-   "label": "Limit / User",
-   "read_only": 1
+   "label": "Limit / User"
   },
   {
    "fieldname": "is_multitier",
@@ -300,15 +288,13 @@
    "fieldname": "tags",
    "fieldtype": "Code",
    "label": "Tags",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "categories",
    "fieldtype": "Code",
    "label": "Categories",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "col_meta2",
@@ -347,27 +333,25 @@
    "fieldname": "hero_image_cdn_url",
    "fieldtype": "Data",
    "label": "Hero Image URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "hero_video_url",
    "fieldtype": "Data",
    "label": "Hero Video URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "gallery_image_urls",
    "fieldtype": "Code",
    "label": "Gallery Image URLs",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "video_urls",
    "fieldtype": "Code",
    "label": "Video URLs",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "tab_content",
@@ -377,14 +361,12 @@
   {
    "fieldname": "about_event",
    "fieldtype": "Text",
-   "label": "About",
-   "read_only": 1
+   "label": "About"
   },
   {
    "fieldname": "about_event_html",
    "fieldtype": "Text Editor",
-   "label": "About (HTML)",
-   "read_only": 1
+   "label": "About (HTML)"
   },
   {
    "fieldname": "good_to_know",
@@ -458,11 +440,23 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
@@ -470,5 +464,6 @@
  "states": [],
  "title_field": "title",
  "track_changes": 0,
- "image_field": "hero_image_cdn_url"
+ "image_field": "hero_image_cdn_url",
+ "quick_entry": 1
 }

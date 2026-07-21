@@ -23,6 +23,17 @@ class MarziUser(ApiDocument):
 	api_list_params = {'limit': 50}
 	api_cursor_key = 'nextCursor'
 	api_detail_merge_list = True
+	api_write_fields = ()
+	api_write_endpoint = None
+	api_write_id_field = None
+	api_update_method = 'PATCH'
+	api_can_create = True
+	api_can_delete = True
+	api_write_aliases = {}
+	api_nested_fields = {}
+	api_read_nested = {}
+	api_write_child_tables = {}
+	api_write_array_fields = ()
 
 	@staticmethod
 	def get_list(**kwargs):

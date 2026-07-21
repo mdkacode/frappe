@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "title",
   "slug",
   "type",
@@ -34,6 +35,7 @@
   "col_seo2",
   "og_title",
   "og_description",
+  "og_image_url",
   "meta_keywords",
   "secondary_keywords",
   "twitter_card",
@@ -44,18 +46,20 @@
   "col_media2",
   "mobile_hero_image",
   "mobile_hero_image_url",
+  "mobile_hero_image_alt",
   "featured_image",
   "featured_image_url",
-  "og_image",
-  "og_image_url",
+  "featured_image_alt",
   "tab_content",
-  "about_section",
-  "breadcrumb",
+  "about_body",
+  "about_read_more_label",
   "ctas",
-  "faqs",
-  "blogs",
-  "upcoming_events",
-  "past_events"
+  "faq_ids",
+  "blog_ids",
+  "upcoming_event_ids",
+  "past_event_ids",
+  "tab_breadcrumb",
+  "breadcrumb"
  ],
  "fields": [
   {
@@ -64,25 +68,30 @@
    "label": "Overview"
   },
   {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Title",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "slug",
    "fieldtype": "Data",
    "label": "Slug",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "type",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Type",
+   "options": "\nEVENT\nBLOG",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "status",
@@ -112,32 +121,27 @@
   {
    "fieldname": "h1",
    "fieldtype": "Data",
-   "label": "H1",
-   "read_only": 1
+   "label": "H1"
   },
   {
    "fieldname": "excerpt",
    "fieldtype": "Small Text",
-   "label": "Excerpt",
-   "read_only": 1
+   "label": "Excerpt"
   },
   {
    "fieldname": "city",
    "fieldtype": "Data",
-   "label": "City",
-   "read_only": 1
+   "label": "City"
   },
   {
    "fieldname": "category",
    "fieldtype": "Data",
-   "label": "Category",
-   "read_only": 1
+   "label": "Category"
   },
   {
    "fieldname": "author",
    "fieldtype": "Data",
-   "label": "Author",
-   "read_only": 1
+   "label": "Author"
   },
   {
    "fieldname": "published_at",
@@ -159,44 +163,38 @@
   {
    "fieldname": "meta_title",
    "fieldtype": "Data",
-   "label": "Meta Title",
-   "read_only": 1
+   "label": "Meta Title"
   },
   {
    "fieldname": "meta_description",
    "fieldtype": "Small Text",
-   "label": "Meta Description",
-   "read_only": 1
+   "label": "Meta Description"
   },
   {
    "fieldname": "primary_keyword",
    "fieldtype": "Data",
-   "label": "Primary Keyword",
-   "read_only": 1
+   "label": "Primary Keyword"
   },
   {
    "fieldname": "canonical_url",
    "fieldtype": "Data",
    "label": "Canonical URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "robots_index",
    "fieldtype": "Check",
-   "label": "Robots Index",
-   "read_only": 1
+   "label": "Robots Index"
   },
   {
    "fieldname": "robots_follow",
    "fieldtype": "Check",
-   "label": "Robots Follow",
-   "read_only": 1
+   "label": "Robots Follow"
   },
   {
    "fieldname": "sitemap_include",
    "fieldtype": "Check",
-   "label": "Sitemap Include",
-   "read_only": 1
+   "label": "Sitemap Include"
   },
   {
    "fieldname": "col_seo2",
@@ -205,35 +203,36 @@
   {
    "fieldname": "og_title",
    "fieldtype": "Data",
-   "label": "OG Title",
-   "read_only": 1
+   "label": "OG Title"
   },
   {
    "fieldname": "og_description",
    "fieldtype": "Small Text",
-   "label": "OG Description",
-   "read_only": 1
+   "label": "OG Description"
+  },
+  {
+   "fieldname": "og_image_url",
+   "fieldtype": "Data",
+   "label": "OG Image URL",
+   "options": "URL"
   },
   {
    "fieldname": "meta_keywords",
    "fieldtype": "Code",
    "label": "Meta Keywords",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "secondary_keywords",
    "fieldtype": "Code",
    "label": "Secondary Keywords",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "twitter_card",
    "fieldtype": "Code",
    "label": "Twitter Card",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "tab_media",
@@ -250,13 +249,12 @@
    "fieldname": "hero_image_url",
    "fieldtype": "Data",
    "label": "Hero Image URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "hero_image_alt",
    "fieldtype": "Data",
-   "label": "Hero Alt",
-   "read_only": 1
+   "label": "Hero Alt"
   },
   {
    "fieldname": "col_media2",
@@ -272,7 +270,12 @@
    "fieldname": "mobile_hero_image_url",
    "fieldtype": "Data",
    "label": "Mobile Hero URL",
-   "read_only": 1
+   "options": "URL"
+  },
+  {
+   "fieldname": "mobile_hero_image_alt",
+   "fieldtype": "Data",
+   "label": "Mobile Hero Alt"
   },
   {
    "fieldname": "featured_image",
@@ -284,19 +287,12 @@
    "fieldname": "featured_image_url",
    "fieldtype": "Data",
    "label": "Featured URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
-   "fieldname": "og_image",
-   "fieldtype": "Image",
-   "label": "OG Image",
-   "options": "og_image_url"
-  },
-  {
-   "fieldname": "og_image_url",
+   "fieldname": "featured_image_alt",
    "fieldtype": "Data",
-   "label": "OG Image URL",
-   "read_only": 1
+   "label": "Featured Alt"
   },
   {
    "fieldname": "tab_content",
@@ -304,53 +300,55 @@
    "label": "Content"
   },
   {
-   "fieldname": "about_section",
-   "fieldtype": "Code",
-   "label": "About Section",
-   "options": "JSON",
-   "read_only": 1
+   "fieldname": "about_body",
+   "fieldtype": "Text Editor",
+   "label": "About Body (HTML)"
   },
   {
-   "fieldname": "breadcrumb",
-   "fieldtype": "Code",
-   "label": "Breadcrumb",
-   "options": "JSON",
-   "read_only": 1
+   "fieldname": "about_read_more_label",
+   "fieldtype": "Data",
+   "label": "About Read-More Label"
   },
   {
    "fieldname": "ctas",
    "fieldtype": "Code",
    "label": "CTAs",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
-   "fieldname": "faqs",
+   "fieldname": "faq_ids",
    "fieldtype": "Code",
-   "label": "FAQs",
-   "options": "JSON",
-   "read_only": 1
+   "label": "FAQ IDs",
+   "options": "JSON"
   },
   {
-   "fieldname": "blogs",
+   "fieldname": "blog_ids",
    "fieldtype": "Code",
-   "label": "Blogs",
-   "options": "JSON",
-   "read_only": 1
+   "label": "Blog IDs",
+   "options": "JSON"
   },
   {
-   "fieldname": "upcoming_events",
+   "fieldname": "upcoming_event_ids",
    "fieldtype": "Code",
-   "label": "Upcoming Events",
-   "options": "JSON",
-   "read_only": 1
+   "label": "Upcoming Event IDs",
+   "options": "JSON"
   },
   {
-   "fieldname": "past_events",
+   "fieldname": "past_event_ids",
    "fieldtype": "Code",
-   "label": "Past Events",
-   "options": "JSON",
-   "read_only": 1
+   "label": "Past Event IDs",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "tab_breadcrumb",
+   "fieldtype": "Tab Break",
+   "label": "Breadcrumb"
+  },
+  {
+   "fieldname": "breadcrumb",
+   "fieldtype": "Table",
+   "label": "Breadcrumb",
+   "options": "Marzi Page Breadcrumb"
   }
  ],
  "index_web_pages_for_search": 0,
@@ -365,11 +363,23 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
@@ -377,5 +387,6 @@
  "states": [],
  "title_field": "title",
  "track_changes": 0,
- "image_field": "hero_image_url"
+ "image_field": "hero_image_url",
+ "quick_entry": 1
 }

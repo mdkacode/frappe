@@ -17,8 +17,11 @@ website_context = {
 	"splash_image": "/assets/marzi_bridge/images/marzi-logo.png",
 }
 
-# Desk CSS: Marzi logo atop the left side navigation.
-app_include_css = "/assets/marzi_bridge/css/marzi_branding.css"
+# Desk CSS/JS: Marzi branding + the record overview header on every Marzi Form.
+# /assets/... paths are served with long-lived cache headers, so bump ?v= on every
+# change to these files — otherwise browsers keep the stale copy.
+app_include_css = "/assets/marzi_bridge/css/marzi_branding.css?v=5"
+app_include_js = "/assets/marzi_bridge/js/marzi_overview.js?v=5"
 
 # Roles / setup
 # ------------------------------------------------------------------------------

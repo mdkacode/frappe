@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "preview",
   "filename",
   "kind",
@@ -30,6 +31,10 @@
    "fieldname": "tab_overview",
    "fieldtype": "Tab Break",
    "label": "Overview"
+  },
+  {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
   },
   {
    "fieldname": "preview",

@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "group_name",
   "category",
   "type",
@@ -22,6 +23,7 @@
   "updated_at",
   "sec_about",
   "description",
+  "rules",
   "interests",
   "tags",
   "tab_media",
@@ -42,25 +44,31 @@
    "label": "Overview"
   },
   {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "group_name",
    "fieldtype": "Data",
    "label": "Name",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "category",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Category",
+   "options": "\nHEALTH\nFITNESS\nHOBBIES\nTRAVEL\nFOOD\nTECH\nARTS\nSOCIAL\nSUPPORT\nLEARNING\nOTHER",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
    "options": "\nOPEN\nCLOSED",
-   "read_only": 1
+   "reqd": 1,
+   "default": "OPEN"
   },
   {
    "fieldname": "status",
@@ -74,8 +82,7 @@
    "fieldname": "city",
    "fieldtype": "Data",
    "label": "City",
-   "in_list_view": 1,
-   "read_only": 1
+   "in_list_view": 1
   },
   {
    "fieldname": "is_default",
@@ -120,22 +127,24 @@
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Description",
-   "read_only": 1
+   "label": "Description"
+  },
+  {
+   "fieldname": "rules",
+   "fieldtype": "Small Text",
+   "label": "Rules"
   },
   {
    "fieldname": "interests",
    "fieldtype": "Code",
    "label": "Interests",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "tags",
    "fieldtype": "Code",
    "label": "Tags",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
   },
   {
    "fieldname": "tab_media",
@@ -207,11 +216,23 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
@@ -219,5 +240,6 @@
  "states": [],
  "title_field": "group_name",
  "track_changes": 0,
- "image_field": "cover_image_url"
+ "image_field": "cover_image_url",
+ "quick_entry": 1
 }

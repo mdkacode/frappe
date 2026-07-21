@@ -23,6 +23,17 @@ class MarziInfoItem(ApiDocument):
 	api_list_params = {}
 	api_cursor_key = None
 	api_detail_merge_list = False
+	api_write_fields = ('kind', 'title', 'icon_url', 'description', 'category', 'is_active')
+	api_write_endpoint = None
+	api_write_id_field = None
+	api_update_method = 'PUT'
+	api_can_create = True
+	api_can_delete = True
+	api_write_aliases = {}
+	api_nested_fields = {}
+	api_read_nested = {}
+	api_write_child_tables = {}
+	api_write_array_fields = ()
 
 	@staticmethod
 	def get_list(**kwargs):

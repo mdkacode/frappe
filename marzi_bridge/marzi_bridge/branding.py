@@ -110,6 +110,11 @@ def apply_desk_branding():
 	- The sidebar "Notification" item stays hidden unless the user's `notifications`
 	  desk property is on (notifications.js only unhides it when
 	  boot.desk_settings.notifications is truthy). Turn it off for all system users.
+	- The Form's right rail (Assigned To / Shared / Tags / Attachments) and the bottom
+	  Activity/Comments footer are gated by the `form_sidebar` and `timeline` desk
+	  properties (form.js checks boot.desk_settings.{form_sidebar,timeline}). These are
+	  meaningless for read-only API-backed docs, so turn them off too. This is the
+	  native gate Frappe itself checks — no CSS/JS override needed.
 
 	    bench --site <site> execute marzi_bridge.branding.apply_desk_branding
 	"""
@@ -133,12 +138,19 @@ def apply_desk_branding():
 	icon.flags.ignore_permissions = True
 	icon.save(ignore_permissions=True) if not icon.is_new() else icon.insert(ignore_permissions=True)
 
-	# 2) Remove the Notification sidebar item for every real user.
+	# 2) Strip desk chrome that's meaningless for read-only API docs, for every real
+	# user: the Notification sidebar item, the Form right rail (assign/share/tags),
+	# and the bottom Activity/Comments footer.
 	users = frappe.get_all(
 		"User", filters={"user_type": "System User", "enabled": 1}, pluck="name"
 	)
 	for user in users:
-		frappe.db.set_value("User", user, "notifications", 0, update_modified=False)
+		frappe.db.set_value(
+			"User",
+			user,
+			{"notifications": 0, "form_sidebar": 0, "timeline": 0},
+			update_modified=False,
+		)
 
 	# 3) "Users" must always mean the API-backed Marzi users: hide Frappe's standard
 	# "Users" rail icon so the only Users entry is Marzi User.
@@ -153,6 +165,6 @@ def apply_desk_branding():
 	frappe.db.commit()
 	frappe.clear_cache()
 	print(
-		f"Desktop Icon '{SIDEBAR_TITLE}' -> {LOGO_MARK}; notifications off for {len(users)} users; "
-		"Frappe 'Users' icon hidden; default_app=marzi_bridge."
+		f"Desktop Icon '{SIDEBAR_TITLE}' -> {LOGO_MARK}; notifications/form_sidebar/timeline "
+		f"off for {len(users)} users; Frappe 'Users' icon hidden; default_app=marzi_bridge."
 	)

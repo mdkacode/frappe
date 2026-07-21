@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "mobile",
   "contact_name",
   "full_name",
@@ -26,6 +27,10 @@
    "fieldname": "tab_overview",
    "fieldtype": "Tab Break",
    "label": "Overview"
+  },
+  {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
   },
   {
    "fieldname": "mobile",

@@ -19,10 +19,21 @@ class MarziTemplate(ApiDocument):
 	api_single_from_list = True
 	api_merge_keys = ()
 	api_field_aliases = {'name': 'template_name'}
-	api_child_tables = {}
+	api_child_tables = {'config_sections': {'doctype': 'Marzi Template Section', 'source': 'item', 'item_key': 'config.sections', 'aliases': {}}}
 	api_list_params = {}
 	api_cursor_key = None
 	api_detail_merge_list = False
+	api_write_fields = ('template_name', 'slug')
+	api_write_endpoint = None
+	api_write_id_field = None
+	api_update_method = 'PATCH'
+	api_can_create = True
+	api_can_delete = True
+	api_write_aliases = {'template_name': 'name'}
+	api_nested_fields = {}
+	api_read_nested = {}
+	api_write_child_tables = {'config': {'field': 'config_sections', 'map': {'key': 'key', 'enabled': 'enabled'}, 'wrap': 'sections'}}
+	api_write_array_fields = ()
 
 	@staticmethod
 	def get_list(**kwargs):

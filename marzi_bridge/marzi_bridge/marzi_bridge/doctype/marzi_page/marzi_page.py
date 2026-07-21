@@ -18,11 +18,22 @@ class MarziPage(ApiDocument):
 	api_auth = True
 	api_single_from_list = False
 	api_merge_keys = ()
-	api_field_aliases = {'templateId': 'template_id', 'pathPrefix': 'path_prefix', 'pageType': 'type', 'metaTitle': 'meta_title', 'metaDescription': 'meta_description', 'metaKeywords': 'meta_keywords', 'primaryKeyword': 'primary_keyword', 'secondaryKeywords': 'secondary_keywords', 'robotsIndex': 'robots_index', 'robotsFollow': 'robots_follow', 'sitemapInclude': 'sitemap_include', 'canonicalUrl': 'canonical_url', 'heroImageUrl': 'hero_image_url', 'heroImageAlt': 'hero_image_alt', 'mobileHeroImageUrl': 'mobile_hero_image_url', 'featuredImageUrl': 'featured_image_url', 'ogImageUrl': 'og_image_url', 'ogTitle': 'og_title', 'ogDescription': 'og_description', 'twitterCard': 'twitter_card', 'aboutSection': 'about_section', 'publishedAt': 'published_at', 'createdAt': 'created_at', 'updatedAt': 'updated_at'}
-	api_child_tables = {}
+	api_field_aliases = {'templateId': 'template_id', 'pathPrefix': 'path_prefix', 'sitemapInclude': 'sitemap_include', 'faqIds': 'faq_ids', 'blogIds': 'blog_ids', 'upcomingEventIds': 'upcoming_event_ids', 'pastEventIds': 'past_event_ids', 'publishedAt': 'published_at', 'createdAt': 'created_at', 'updatedAt': 'updated_at', 'tenantId': 'tenant_id'}
+	api_child_tables = {'breadcrumb': {'doctype': 'Marzi Page Breadcrumb', 'source': 'item', 'item_key': 'breadcrumb', 'aliases': {}}}
 	api_list_params = {}
 	api_cursor_key = None
 	api_detail_merge_list = False
+	api_write_fields = ('slug', 'title', 'type', 'meta_title', 'meta_description', 'meta_keywords', 'og_title', 'og_description', 'og_image_url', 'canonical_url', 'primary_keyword', 'secondary_keywords', 'robots_index', 'robots_follow', 'twitter_card', 'h1', 'excerpt', 'city', 'category', 'author', 'sitemap_include', 'ctas', 'faq_ids', 'blog_ids', 'upcoming_event_ids', 'past_event_ids')
+	api_write_endpoint = None
+	api_write_id_field = None
+	api_update_method = 'PATCH'
+	api_can_create = True
+	api_can_delete = True
+	api_write_aliases = {'meta_title': 'metaTitle', 'meta_description': 'metaDescription', 'meta_keywords': 'metaKeywords', 'og_title': 'ogTitle', 'og_description': 'ogDescription', 'og_image_url': 'ogImageUrl', 'canonical_url': 'canonicalUrl', 'primary_keyword': 'primaryKeyword', 'secondary_keywords': 'secondaryKeywords', 'robots_index': 'robotsIndex', 'robots_follow': 'robotsFollow', 'twitter_card': 'twitterCard', 'sitemap_include': 'sitemapInclude', 'faq_ids': 'faqIds', 'blog_ids': 'blogIds', 'upcoming_event_ids': 'upcomingEventIds', 'past_event_ids': 'pastEventIds'}
+	api_nested_fields = {'heroImage': {'url': 'hero_image_url', 'alt': 'hero_image_alt'}, 'mobileHeroImage': {'url': 'mobile_hero_image_url', 'alt': 'mobile_hero_image_alt'}, 'featuredImage': {'url': 'featured_image_url', 'alt': 'featured_image_alt'}, 'about': {'body': 'about_body', 'readMoreLabel': 'about_read_more_label'}}
+	api_read_nested = {'meta': {'title': 'meta_title', 'description': 'meta_description', 'keywords': 'meta_keywords', 'ogTitle': 'og_title', 'ogDescription': 'og_description', 'ogImage': 'og_image_url', 'canonical': 'canonical_url', 'primaryKeyword': 'primary_keyword', 'secondaryKeywords': 'secondary_keywords', 'twitterCard': 'twitter_card', 'robots': {'index': 'robots_index', 'follow': 'robots_follow'}}}
+	api_write_child_tables = {'breadcrumb': {'field': 'breadcrumb', 'map': {'label': 'label', 'href': 'href'}}}
+	api_write_array_fields = ()
 
 	@staticmethod
 	def get_list(**kwargs):

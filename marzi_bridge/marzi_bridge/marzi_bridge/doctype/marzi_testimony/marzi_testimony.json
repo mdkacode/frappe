@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "photo",
   "person_name",
   "quote",
@@ -29,6 +30,10 @@
    "label": "Overview"
   },
   {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "photo",
    "fieldtype": "Image",
    "label": "Photo",
@@ -39,33 +44,30 @@
    "fieldtype": "Data",
    "label": "Name",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "quote",
    "fieldtype": "Small Text",
    "label": "Quote",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "age",
    "fieldtype": "Int",
-   "label": "Age",
-   "read_only": 1
+   "label": "Age"
   },
   {
    "fieldname": "location",
    "fieldtype": "Data",
    "label": "Location",
-   "in_list_view": 1,
-   "read_only": 1
+   "in_list_view": 1
   },
   {
    "fieldname": "rating",
    "fieldtype": "Int",
-   "label": "Rating",
-   "read_only": 1
+   "label": "Rating"
   },
   {
    "fieldname": "col_ov2",
@@ -76,25 +78,25 @@
    "fieldtype": "Check",
    "label": "Published",
    "in_list_view": 1,
-   "read_only": 1
+   "default": 0
   },
   {
    "fieldname": "display_order",
    "fieldtype": "Int",
-   "label": "Order",
-   "read_only": 1
+   "label": "Order"
   },
   {
    "fieldname": "image_url",
    "fieldtype": "Data",
    "label": "Image URL",
-   "read_only": 1
+   "options": "URL",
+   "reqd": 1
   },
   {
    "fieldname": "video_url",
    "fieldtype": "Data",
    "label": "Video URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "created_at",
@@ -115,11 +117,23 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
@@ -127,5 +141,6 @@
  "states": [],
  "title_field": "person_name",
  "track_changes": 0,
- "image_field": "image_url"
+ "image_field": "image_url",
+ "quick_entry": 1
 }

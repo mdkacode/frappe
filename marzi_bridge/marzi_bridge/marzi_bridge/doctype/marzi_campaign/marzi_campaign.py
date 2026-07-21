@@ -11,18 +11,29 @@ class MarziCampaign(ApiDocument):
 	DOCTYPE = "Marzi Campaign"
 	api_endpoint = "/v1/publishing/admin/campaigns"
 	api_detail_endpoint = None
-	api_id_field = "campaign_name"
+	api_id_field = "id"
 	api_service = "publishing"
 	api_list_key = 'campaigns'
 	api_item_key = None
 	api_auth = True
 	api_single_from_list = True
 	api_merge_keys = ()
-	api_field_aliases = {}
+	api_field_aliases = {'startsAt': 'starts_at', 'endsAt': 'ends_at', 'discountCampaignName': 'discount_campaign_name', 'pageCount': 'page_count', 'tenantId': 'tenant_id', 'createdAt': 'created_at', 'updatedAt': 'updated_at'}
 	api_child_tables = {}
 	api_list_params = {}
 	api_cursor_key = None
 	api_detail_merge_list = False
+	api_write_fields = ('slug', 'name', 'description', 'starts_at', 'ends_at', 'discount_campaign_name')
+	api_write_endpoint = None
+	api_write_id_field = None
+	api_update_method = 'PATCH'
+	api_can_create = True
+	api_can_delete = True
+	api_write_aliases = {'starts_at': 'startsAt', 'ends_at': 'endsAt', 'discount_campaign_name': 'discountCampaignName'}
+	api_nested_fields = {'defaultUtm': {'source': 'utm_source', 'medium': 'utm_medium', 'campaign': 'utm_campaign', 'term': 'utm_term', 'content': 'utm_content'}}
+	api_read_nested = {}
+	api_write_child_tables = {}
+	api_write_array_fields = ()
 
 	@staticmethod
 	def get_list(**kwargs):

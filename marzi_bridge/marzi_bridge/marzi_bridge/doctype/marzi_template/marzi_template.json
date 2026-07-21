@@ -9,13 +9,14 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "template_name",
   "slug",
   "col_ov2",
   "created_at",
   "updated_at",
-  "sec_config",
-  "config"
+  "tab_config",
+  "config_sections"
  ],
  "fields": [
   {
@@ -24,18 +25,22 @@
    "label": "Overview"
   },
   {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "template_name",
    "fieldtype": "Data",
    "label": "Name",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "slug",
    "fieldtype": "Data",
    "label": "Slug",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "col_ov2",
@@ -54,16 +59,15 @@
    "read_only": 1
   },
   {
-   "fieldname": "sec_config",
-   "fieldtype": "Section Break",
-   "label": "Config"
+   "fieldname": "tab_config",
+   "fieldtype": "Tab Break",
+   "label": "Sections"
   },
   {
-   "fieldname": "config",
-   "fieldtype": "Code",
-   "label": "Config",
-   "options": "JSON",
-   "read_only": 1
+   "fieldname": "config_sections",
+   "fieldtype": "Table",
+   "label": "Sections",
+   "options": "Marzi Template Section"
   }
  ],
  "index_web_pages_for_search": 0,
@@ -78,16 +82,29 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
  "title_field": "template_name",
- "track_changes": 0
+ "track_changes": 0,
+ "quick_entry": 1
 }

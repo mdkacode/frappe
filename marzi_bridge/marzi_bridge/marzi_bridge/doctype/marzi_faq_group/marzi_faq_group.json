@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "group_name",
   "description",
   "is_active",
@@ -23,6 +24,10 @@
    "fieldname": "tab_overview",
    "fieldtype": "Tab Break",
    "label": "Overview"
+  },
+  {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
   },
   {
    "fieldname": "group_name",

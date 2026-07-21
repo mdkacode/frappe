@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tab_overview",
+  "overview_banner",
   "title",
   "slug",
   "subtitle",
@@ -37,6 +38,7 @@
   "tab_content",
   "content_html",
   "content_json",
+  "tag_ids",
   "tab_tags",
   "tags"
  ],
@@ -47,24 +49,27 @@
    "label": "Overview"
   },
   {
+   "fieldname": "overview_banner",
+   "fieldtype": "HTML"
+  },
+  {
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Title",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "slug",
    "fieldtype": "Data",
    "label": "Slug",
    "in_list_view": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "subtitle",
    "fieldtype": "Data",
-   "label": "Subtitle",
-   "read_only": 1
+   "label": "Subtitle"
   },
   {
    "fieldname": "status",
@@ -94,8 +99,7 @@
   {
    "fieldname": "excerpt",
    "fieldtype": "Small Text",
-   "label": "Excerpt",
-   "read_only": 1
+   "label": "Excerpt"
   },
   {
    "fieldname": "author_id",
@@ -106,8 +110,7 @@
   {
    "fieldname": "category_id",
    "fieldtype": "Data",
-   "label": "Category ID",
-   "read_only": 1
+   "label": "Category ID"
   },
   {
    "fieldname": "reading_minutes",
@@ -147,20 +150,18 @@
   {
    "fieldname": "seo_title",
    "fieldtype": "Data",
-   "label": "SEO Title",
-   "read_only": 1
+   "label": "SEO Title"
   },
   {
    "fieldname": "seo_description",
    "fieldtype": "Small Text",
-   "label": "SEO Description",
-   "read_only": 1
+   "label": "SEO Description"
   },
   {
    "fieldname": "canonical_url",
    "fieldtype": "Data",
    "label": "Canonical URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "tab_media",
@@ -177,7 +178,7 @@
    "fieldname": "cover_image_url",
    "fieldtype": "Data",
    "label": "Cover Image URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "col_media2",
@@ -193,7 +194,7 @@
    "fieldname": "og_image_url",
    "fieldtype": "Data",
    "label": "OG Image URL",
-   "read_only": 1
+   "options": "URL"
   },
   {
    "fieldname": "tab_content",
@@ -210,8 +211,13 @@
    "fieldname": "content_json",
    "fieldtype": "Code",
    "label": "Content (JSON)",
-   "options": "JSON",
-   "read_only": 1
+   "options": "JSON"
+  },
+  {
+   "fieldname": "tag_ids",
+   "fieldtype": "Code",
+   "label": "Tag IDs (write)",
+   "options": "JSON"
   },
   {
    "fieldname": "tab_tags",
@@ -238,11 +244,23 @@
  "permissions": [
   {
    "read": 1,
-   "role": "Marzi Admin"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "Marzi Admin",
+   "create": 1,
+   "delete": 1
   },
   {
    "read": 1,
-   "role": "System Manager"
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1
   }
  ],
  "sort_field": "creation",
@@ -250,5 +268,6 @@
  "states": [],
  "title_field": "title",
  "track_changes": 0,
- "image_field": "cover_image_url"
+ "image_field": "cover_image_url",
+ "quick_entry": 1
 }
