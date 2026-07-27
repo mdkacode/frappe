@@ -1,6 +1,6 @@
 {
  "app": "marzi_bridge",
- "creation": "2026-07-20 22:50:59.783118",
+ "creation": "2026-07-26 22:40:05.172133",
  "docstatus": 0,
  "doctype": "Workspace Sidebar",
  "header_icon": "integration",
@@ -133,6 +133,19 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "activity",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Live Activity",
+   "link_to": "live-activity",
+   "link_type": "Page",
+   "open_in_new_tab": 1,
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
    "icon": "users",
    "indent": 0,
    "keep_closed": 0,
@@ -150,8 +163,8 @@
    "indent": 0,
    "keep_closed": 0,
    "label": "WhatsApp",
-   "link_to": "Marzi WhatsApp Conversation",
-   "link_type": "DocType",
+   "link_to": "whatsapp",
+   "link_type": "Page",
    "open_in_new_tab": 1,
    "show_arrow": 0,
    "type": "Link"
@@ -333,7 +346,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-07-20 22:50:59.783118",
+ "modified": "2026-07-26 22:40:05.172133",
  "modified_by": "Administrator",
  "module": "Marzi Bridge",
  "name": "Marzi Bridge",

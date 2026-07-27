@@ -30,8 +30,9 @@ SECTIONS = [
 		("Info Items", "Marzi Info Item", "list"),
 	]),
 	("Communities", [
+		("Live Activity", "live-activity", "activity", "Page"),
 		("Groups", "Marzi Group", "users"),
-		("WhatsApp", "Marzi WhatsApp Conversation", "message"),
+		("WhatsApp", "whatsapp", "message", "Page"),
 		("Escalations", "Marzi Escalation", "alert"),
 		("Blocked Messages", "Marzi Blocked Message", "unlink"),
 	]),
@@ -61,13 +62,16 @@ def _rows():
 	]
 	for section_label, entries in SECTIONS:
 		rows.append({"label": section_label, "type": "Section Break"})
-		for label, doctype, icon in entries:
-			if not frappe.db.exists("DocType", doctype):
+		for entry in entries:
+			label, target, icon = entry[0], entry[1], entry[2]
+			link_type = entry[3] if len(entry) > 3 else "DocType"
+			# Skip links whose target isn't installed (DocType or Page).
+			if not frappe.db.exists(link_type, target):
 				continue
 			rows.append({
 				"label": label,
-				"link_to": doctype,
-				"link_type": "DocType",
+				"link_to": target,
+				"link_type": link_type,
 				"type": "Link",
 				"icon": icon,
 				"child": 1,
